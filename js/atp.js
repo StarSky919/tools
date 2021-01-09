@@ -1,4 +1,5 @@
 var str_atp_zh = [
+    '首页',
     '小P计算',
     'ATP计算',
     '输入ATP',
@@ -10,6 +11,7 @@ var str_atp_zh = [
 ]
 
 var str_atp_en = [
+    'Home',
     'BP Calc',
     'Cleared songs\' ATP Calc',
     'Enter your ATP',
@@ -22,23 +24,25 @@ var str_atp_en = [
 
 var lang = (navigator.language || navigator.browserLanguage).toLowerCase();
 if (lang.indexOf('zh') >= 0) {
-    getElm1('nav').innerHTML = str_atp_zh[0];
-    getElm1('title').innerHTML = str_atp_zh[1];
-    getElm1('atp').placeholder = str_atp_zh[2];
-    getElm1('ez').placeholder = str_atp_zh[3];
-    getElm1('hd').placeholder = str_atp_zh[4];
-    getElm1('ch').placeholder = str_atp_zh[5];
-    getElm1('gl').placeholder = str_atp_zh[6];
-    getElm1('total').placeholder = str_atp_zh[7];
+    getElm1('home').innerHTML = str_atp_zh[0];
+    getElm1('stp').innerHTML = str_atp_zh[1];
+    getElm1('title').innerHTML = str_atp_zh[2];
+    getElm1('atp').placeholder = str_atp_zh[3];
+    getElm1('ez').placeholder = str_atp_zh[4];
+    getElm1('hd').placeholder = str_atp_zh[5];
+    getElm1('ch').placeholder = str_atp_zh[6];
+    getElm1('gl').placeholder = str_atp_zh[7];
+    getElm1('total').placeholder = str_atp_zh[8];
 } else {
-    getElm1('nav').innerHTML = str_atp_en[0];
-    getElm1('title').innerHTML = str_atp_en[1];
-    getElm1('atp').placeholder = str_atp_en[2];
-    getElm1('ez').placeholder = str_atp_en[3];
-    getElm1('hd').placeholder = str_atp_en[4];
-    getElm1('ch').placeholder = str_atp_en[5];
-    getElm1('gl').placeholder = str_atp_en[6];
-    getElm1('total').placeholder = str_atp_en[7];
+    getElm1('home').innerHTML = str_atp_en[0];
+    getElm1('stp').innerHTML = str_atp_en[1];
+    getElm1('title').innerHTML = str_atp_en[2];
+    getElm1('atp').placeholder = str_atp_en[3];
+    getElm1('ez').placeholder = str_atp_en[4];
+    getElm1('hd').placeholder = str_atp_en[5];
+    getElm1('ch').placeholder = str_atp_en[6];
+    getElm1('gl').placeholder = str_atp_en[7];
+    getElm1('total').placeholder = str_atp_en[8];
 }
 
 var atp, ez, hd, ch, gl, total;

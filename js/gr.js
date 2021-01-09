@@ -1,4 +1,5 @@
 var str_gr_zh = [
+    '首页',
     'ATP计算',
     '小P数量计算',
     '输入歌曲TP',
@@ -9,6 +10,7 @@ var str_gr_zh = [
 ]
 
 var str_gr_en = [
+    'Home',
     'ATP Calc',
     'Black Perfect Calc',
     'Enter your TP',
@@ -20,21 +22,23 @@ var str_gr_en = [
 
 var lang = (navigator.language || navigator.browserLanguage).toLowerCase();
 if (lang.indexOf('zh') >= 0) {
-    getElm1('nav').innerHTML = str_gr_zh[0];
-    getElm1('title').innerHTML = str_gr_zh[1];
-    getElm1('stp').placeholder = str_gr_zh[2];
-    getElm1('perfect').placeholder = str_gr_zh[3];
-    getElm1('good').placeholder = str_gr_zh[4];
-    getElm1('bad').placeholder = str_gr_zh[5];
-    getElm1('miss').placeholder = str_gr_zh[6];
+    getElm1('home').innerHTML = str_gr_zh[0];
+    getElm1('atp').innerHTML = str_gr_zh[1];
+    getElm1('title').innerHTML = str_gr_zh[2];
+    getElm1('stp').placeholder = str_gr_zh[3];
+    getElm1('perfect').placeholder = str_gr_zh[4];
+    getElm1('good').placeholder = str_gr_zh[5];
+    getElm1('bad').placeholder = str_gr_zh[6];
+    getElm1('miss').placeholder = str_gr_zh[7];
 } else {
-    getElm1('nav').innerHTML = str_gr_en[0];
-    getElm1('title').innerHTML = str_gr_en[1];
-    getElm1('stp').placeholder = str_gr_en[2];
-    getElm1('perfect').placeholder = str_gr_en[3];
-    getElm1('good').placeholder = str_gr_en[4];
-    getElm1('bad').placeholder = str_gr_en[5];
-    getElm1('miss').placeholder = str_gr_en[6];
+    getElm1('home').innerHTML = str_gr_en[0];
+    getElm1('atp').innerHTML = str_gr_en[1];
+    getElm1('title').innerHTML = str_gr_en[2];
+    getElm1('stp').placeholder = str_gr_en[3];
+    getElm1('perfect').placeholder = str_gr_en[4];
+    getElm1('good').placeholder = str_gr_en[5];
+    getElm1('bad').placeholder = str_gr_en[6];
+    getElm1('miss').placeholder = str_gr_en[7];
 }
 
 var stp, perfect, good, bad, miss;

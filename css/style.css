@@ -19,6 +19,7 @@
 * {
     font-family: "Electrolize", sans-serif;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -89,6 +90,30 @@ body {
     flex-direction: column;
 }
 
+.tools {
+    margin: 10px 0;
+    line-height: 50px;
+}
+
+.tools a {
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid var(--color3);
+    border-radius: 5px;
+    color: var(--color1);
+    transition: box-shadow 0.25s;
+}
+
+.tools a:hover {
+    box-shadow: 2px 4px 8px var(--alpha1);
+}
+
+.tools a:active {
+    
+}
+
 .it {
     height: 32px;
     margin: 16px 0;
@@ -96,6 +121,7 @@ body {
     font-size: 16px;
     outline: none;
     border: 1px solid var(--color3);
+    border-radius: 5px;
     transition: box-shadow 0.25s;
 }
 
@@ -109,6 +135,7 @@ p.button {
 
 p.button a {
     border: 1px solid var(--alpha1);
+    border-radius: 5px;
     text-decoration: none;
     background: var(--color2);
     color: var(--color1);
@@ -129,9 +156,19 @@ p.copyright {
     font-size: 12px;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 768px) {
+    .tools a:hover {
+        box-shadow: none;
+    }
+    
+    .tools a:active {
+        box-shadow: 2px 4px 8px var(--alpha1);
+    }
+}
+
+@media screen and (min-width: 768px) {
     .row {
-        width: 1200px;
-        margin: 0 auto;
+        max-width: 768px;
+        margin: 50px auto auto;
     }
 }
