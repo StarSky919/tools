@@ -15,10 +15,10 @@ const password2 = 8728348608;
 function convert() {
     let input_value = ab.value;
     if (input_value) {
-        let fuck1 = (input_value.replace(/av/i, "") ^ password1) + password2;
+        let abv = (input_value.replace(/av/i, "") ^ password1) + password2;
         let array2 = {};
         for (let i = 0; i < 6; i++) {
-            array2[enable_code[i]] = password[Math.floor(fuck1 / 58 ** i) % 58];
+            array2[enable_code[i]] = password[Math.floor(abv / 58 ** i) % 58];
         }
         let out_bv = 1 + array2[1] + array2[2] + 4 + array2[4] + 1 + array2[6] + 7 + array2[8] + array2[9];
         let base58 = 0;
@@ -29,16 +29,16 @@ function convert() {
         if (input_value.match(RegExp(verify, "i")) && verify > 0) {
             result.innerHTML = `BV${out_bv}`;
         } else {
-            fuck1 = input_value.replace(/bv/i, "");
+            abv = input_value.replace(/bv/i, "");
             base58 = 0;
             for (let i = 0; i < 6; i++) {
-                base58 += array[fuck1[enable_code[i]]] * 58 ** i;
+                base58 += array[abv[enable_code[i]]] * 58 ** i;
             }
             verify = (base58 - password2) ^ password1;
-            fuck1 = (verify ^ password1) + password2;
+            abv = (verify ^ password1) + password2;
             array2 = {};
             for (let i = 0; i < 6; i++) {
-                array2[enable_code[i]] = password[Math.floor(fuck1 / 58 ** i) % 58];
+                array2[enable_code[i]] = password[Math.floor(abv / 58 ** i) % 58];
             }
             out_bv = `BV1${array2[1]}${array2[2]}${4}${array2[4]}${1}${array2[6]}${7}${array2[8]}${array2[9]}`;
             if (input_value.match(RegExp(out_bv, "i")) && verify > 0) {

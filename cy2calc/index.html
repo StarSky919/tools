@@ -2,10 +2,39 @@
 <html>
 
 <head>
-    <meta http-equiv="Refresh" content="0; url=gr.html">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <title></title>
 </head>
 
 <body>
+    <div class="nav">
+        <label class="title">Cy2Calc</label>
+        <div class="box">
+            <div class="items"><a href="atp/" id="nav"></a></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="main">
+            <div class="container">
+                <h2 id="title"></h2>
+                <p id="result"></p>
+                <input type="number" class="it" id="stp" />
+                <input type="number" class="it" id="perfect" />
+                <input type="number" class="it" id="good" />
+                <input type="number" class="it" id="bad" />
+                <input type="number" class="it" id="miss" />
+                <p class="button">
+                    <a id="calc" onclick="calc()"></a>
+                    <a id="reset" onclick="reset()"></a>
+                </p>
+            </div>
+            <p class="copyright">© 2021 StarSky919</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/gr.js"></script>
 </body>
 
 </html>
