@@ -1,0 +1,137 @@
+@font-face {
+    font-family: "Electrolize";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(Electrolize.ttf) format("truetype");
+}
+
+:root {
+    --color1: #000000;
+    --color2: #ffffff;
+    --color3: #d0d0d0;
+    --color4: #353941;
+    --color5: #9898FF;
+    --alpha1: rgba(0, 0, 0, 0.24);
+    --alpha2: rgba(0, 0, 0, 0.60);
+}
+
+* {
+    font-family: "Electrolize", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color2);
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    background: var(--color4);
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.nav .title {
+    margin-left: 2.5%;
+    text-align: left;
+    font-weight: bold;
+    line-height: 50px;
+    color: var(--color2);
+}
+
+.nav .box {
+    margin-right: 2.5%;
+    line-height: 50px;
+    float: right;
+}
+
+.nav .items {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.nav .items a {
+    text-decoration: none;
+    color: var(--color2);
+}
+
+.row {
+    margin-top: 50px;
+    display: flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+}
+
+.main {
+    background: var(--color2);
+    padding: 5%;
+}
+
+.a1 {
+    text-decoration: none;
+    color: var(--color1);
+}
+
+.a1:hover {
+    border-bottom: 1px solid var(--color1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.it {
+    height: 32px;
+    margin: 16px 0;
+    padding: 16px 8px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid var(--color3);
+    transition: box-shadow 0.25s;
+}
+
+.it:focus {
+    box-shadow: 2px 4px 8px var(--alpha1);
+}
+
+p.button {
+    text-align: right;
+}
+
+p.button a {
+    border: 1px solid var(--alpha1);
+    text-decoration: none;
+    background: var(--color2);
+    color: var(--color1);
+    font-size: 14px;
+    padding: 8px 32px;
+    transition: box-shadow 0.25s;
+}
+
+p.button a:nth-child(1) {
+    margin-right: 8px;
+}
+
+p.button a:active {
+    box-shadow: 2px 4px 8px var(--alpha1);
+}
+
+p.copyright {
+    font-size: 12px;
+}
+
+@media screen and (min-width: 1200px) {
+    .row {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
