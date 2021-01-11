@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="../../css/style.css" type="text/css">
+    <title>密码生成器</title>
+</head>
+
+<body>
+    <div class="nav">
+        <label class="title">Password Generator</label>
+        <div class="box">
+            <div class="items"><a href="../../">首页</a></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="main">
+            <div class="container">
+                <h2>密码生成器</h2>
+                <p id="result">设置长度和选项来生成随机密码</p>
+                <form class="conditions">
+                    <table>
+                        <tr>
+                            <td>密码长度：</td>
+                            <td><input type="number" class="in" id="length" onkeydown="check()" value="8" /></td>
+                        </tr>
+                        <tr>
+                            <td>大写字母：</td>
+                            <td><label for="uc">A~Z</label></td>
+                            <td>
+                                <input type="checkbox" id="uc" checked/>
+                                <label for="uc">✓</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>小写字母：</td>
+                            <td><label for="lc">a~z</label></td>
+                            <td>
+                                <input type="checkbox" id="lc" />
+                                <label for="lc">✓</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>数字：</td>
+                            <td><label for="num">0~9</label></td>
+                            <td>
+                                <input type="checkbox" id="num" checked/>
+                                <label for="num">✓</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>符号：</td>
+                            <td><label for="mark">!?~=</label></td>
+                            <td>
+                                <input type="checkbox" id="mark" />
+                                <label for="mark">✓</label>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <p class="button">
+                    <a id="convert" onclick="generate()">生成</a>
+                </p>
+            </div>
+            <p class="copyright">
+                &copy; 2021 StarSky919
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/main.js"></script>
+    <script type="text/javascript" src="../js/password.js"></script>
+</body>
+
+</html>
