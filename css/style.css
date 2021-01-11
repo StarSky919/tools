@@ -65,11 +65,11 @@ body {
     text-decoration: none;
     color: var(--color2);
     border-radius: 9px;
-    transition: background 0.2s;
+    transition: color 0.2s;
 }
 
 .nav .items a:hover {
-    background: var(--alpha3);
+    color: var(--color5);
 }
 
 .row {
@@ -237,6 +237,14 @@ p.copyright {
 }
 
 @media screen and (max-width: 768px) {
+    .nav .items a:hover {
+        color: var(--color2);
+    }
+    
+    .nav .items a:active {
+        color: var(--color5);
+    }
+    
     .tools a:hover {
         box-shadow: none;
     }
