@@ -1,9 +1,9 @@
 @font-face {
-    font-family: "Electrolize";
+    font-family: "SourceHanSerifCN";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(Electrolize.ttf) format("truetype");
+    src: url(SourceHanSerifCN-Regular.ttf) format("truetype");
 }
 
 :root {
@@ -19,7 +19,7 @@
 }
 
 * {
-    font-family: "Electrolize", sans-serif;
+    font-family: "SourceHanSerifCN", sans-serif;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
