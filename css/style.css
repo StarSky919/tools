@@ -131,6 +131,26 @@ body {
     text-indent: 2em;
 }
 
+.update .yyyy {
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--color3);
+}
+
+.update .mmdd {
+    margin: 16px 0;
+}
+
+.update .title {
+    font-weight: bold;
+}
+
+.update .content {
+    margin-left: 1em;
+}
+
 .it {
     height: 32px;
     margin: 16px 0;
