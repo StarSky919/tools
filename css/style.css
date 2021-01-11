@@ -1,10 +1,10 @@
-@font-face {
+/*@font-face {
     font-family: "SourceHanSerifCN";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
     src: url(SourceHanSerifCN-Regular.ttf) format("truetype");
-}
+}*/
 
 :root {
     --color1: #000000;
@@ -19,7 +19,7 @@
 }
 
 * {
-    font-family: "SourceHanSerifCN", sans-serif;
+    /*font-family: "SourceHanSerifCN", sans-serif;*/
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
