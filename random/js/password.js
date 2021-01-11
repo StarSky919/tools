@@ -49,7 +49,7 @@ function generate() {
         }
     }
     if (password.trim()) {
-        getElm1('result').innerHTML = password;
+        getElm1('result').innerHTML = '密码：' + password;
     } else {
         getElm1('result').innerHTML = '请设置选项';
     }
