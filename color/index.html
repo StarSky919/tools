@@ -13,6 +13,16 @@
             font-weight: bold;
             border-bottom: 1px solid var(--color3);
         }
+
+        .converter {}
+
+        .converter .text.rgb {
+            width: 3em;
+        }
+
+        #hex {
+            width: 6em;
+        }
     </style>
     <title>RGB & HEX颜色工具</title>
 </head>
@@ -35,12 +45,15 @@
                 <div class="title">颜色转换</div>
                 <div class="converter">
                     <div>
-                        input:checkbox.
+                        RGB：
+                        <input type="number" id="red" class="text rgb" placeholder="R" onkeydown="check.rgb(this)">
+                        <input type="number" id="green" class="text rgb" placeholder="G" onkeydown="check.rgb(this)">
+                        <input type="number" id="blue" class="text rgb" placeholder="B" onkeydown="check.rgb(this)">
                     </div>
                     <div>
-                        <div>HEX</div>
-                        <div>#</div>
-                        <div>114514</div>
+                        HEX：
+                        <span>#</span>
+                        <input type="text" id="hex" class="text" placeholder="HEX" onkeydown="check.hex(this)">
                     </div>
                 </div>
             </div>
@@ -51,6 +64,32 @@
     </div>
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript">
+        var check = {
+            rgb: function(obj) {
+                function c() {
+                    if (Number(obj.value) > 255) {
+                        obj.value = 255;
+                    }
+                    var regex = /[^0-9]/g;
+                    if (regex.test(obj.value)) {
+                        obj.value = obj.value.replace(regex, '');
+                    }
+                }
+                setTimeout(c, 1);
+            },
+            hex: function(obj) {
+                function c() {
+                    if (obj.value.length > 6) {
+                        obj.value = obj.value.slice(0, 6);
+                    }
+                    var regex = /[^0-9A-Fa-f]/g;
+                    if (regex.test(obj.value)) {
+                        obj.value = obj.value.replace(regex, 'F');
+                    }
+                }
+                setTimeout(c, 1);
+            }
+        }
     </script>
 </body>
 
