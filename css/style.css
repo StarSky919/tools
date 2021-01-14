@@ -63,6 +63,7 @@ body {
     padding: 5px 9px;
     line-height: 50px;
     text-decoration: none;
+    cursor: pointer;
     color: var(--color2);
     border-radius: 9px;
     transition: color 0.2s;
@@ -86,20 +87,11 @@ body {
     padding: 5%;
 }
 
-.a1 {
-    text-decoration: none;
+.a {
     color: var(--color1);
 }
 
-.a1:hover {
-    border-bottom: 1px solid var(--color1);
-}
-
-.a2 {
-    color: var(--color1);
-}
-
-.a2:hover {
+.a:hover {
     color: var(--color5);
 }
 
@@ -108,51 +100,7 @@ body {
     flex-direction: column;
 }
 
-.tools {
-    margin: 10px 0;
-    line-height: 50px;
-}
-
-.tools a {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    border: 1px solid var(--alpha1);
-    border-radius: 4px;
-    color: var(--color1);
-    background: var(--color2);
-    transition: box-shadow 0.2s, background 0.2s;
-}
-
-.tools a:hover {
-    box-shadow: 2px 4px 8px var(--alpha1);
-}
-
-.about {
-    text-indent: 2em;
-}
-
-.update .yyyy {
-    margin-bottom: 16px;
-    padding-bottom: 6px;
-    font-size: 20px;
-    font-weight: bold;
-    border-bottom: 1px solid var(--color3);
-}
-
-.update .mmdd {
-    margin: 16px 0;
-}
-
-.update .title {
-    font-weight: bold;
-}
-
-.update .content {
-    margin-left: 1em;
-}
-
-.it {
+.input1 {
     height: 32px;
     margin: 16px 0;
     padding: 16px 8px;
@@ -168,40 +116,8 @@ body {
 }
 
 #result {
+    font-size: 16px;
     line-height: 16px;
-}
-
-.in {
-    margin: -4px 0;
-    padding: 4px;
-    width: 3em;
-    font-size: 14px;
-    outline: none;
-    border: 1px solid var(--color3);
-    border-radius: 4px;
-}
-
-.conditions td {
-    padding: 8px 0;
-    line-height: 1em;
-}
-
-.conditions input[type=checkbox] {
-    display: none;
-}
-
-.conditions input+label {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    text-align: center;
-    color: transparent;
-    border: 1px solid var(--color3);
-    border-radius: 4px;
-}
-
-.conditions input:checked+label {
-    color: var(--color1);
 }
 
 p.button {
@@ -240,17 +156,9 @@ p.copyright {
     .nav .items a:hover {
         color: var(--color2);
     }
-    
+
     .nav .items a:active {
         color: var(--color5);
-    }
-    
-    .tools a:hover {
-        box-shadow: none;
-    }
-
-    .tools a:active {
-        box-shadow: 2px 4px 8px var(--alpha1);
     }
 }
 

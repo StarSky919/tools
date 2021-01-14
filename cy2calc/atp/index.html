@@ -21,12 +21,12 @@
             <div class="container">
                 <h2 id="title">ATP计算</h2>
                 <p id="result">开始计算以查看结果</p>
-                <input type="number" class="it" id="atp" placeholder="输入ATP" />
-                <input type="number" class="it" id="ez" placeholder="输入Easy通关数" />
-                <input type="number" class="it" id="hd" placeholder="输入Hard通关数" />
-                <input type="number" class="it" id="ch" placeholder="输入Chaos通关数" />
-                <input type="number" class="it" id="gl" placeholder="输入Glitch通关数" />
-                <input type="number" class="it" id="total" placeholder="输入谱面总数" />
+                <input type="number" class="input1" id="atp" placeholder="输入ATP" />
+                <input type="number" class="input1" id="ez" placeholder="输入Easy通关数" />
+                <input type="number" class="input1" id="hd" placeholder="输入Hard通关数" />
+                <input type="number" class="input1" id="ch" placeholder="输入Chaos通关数" />
+                <input type="number" class="input1" id="gl" placeholder="输入Glitch通关数" />
+                <input type="number" class="input1" id="total" placeholder="输入谱面总数" />
                 <p class="button">
                     <a id="calc" onclick="calc()">计算</a>
                     <a id="reset" onclick="reset()">重置</a>
@@ -36,8 +36,47 @@
         </div>
     </div>
     <script type="text/javascript" src="../../js/main.js"></script>
-    <script type="text/javascript" src="../js/cy2calc.js"></script>
-    <script type="text/javascript" src="../js/atp.js"></script>
+    <script type="text/javascript" src="../../js/cy2calc.js"></script>
+    <script type="text/javascript">
+        var atp, ez, hd, ch, gl, total;
+
+        function calc() {
+            atp = Number(getElm1('atp').value);
+            ez = Number(getElm1('ez').value);
+            hd = Number(getElm1('hd').value);
+            ch = Number(getElm1('ch').value);
+            gl = Number(getElm1('gl').value);
+            total = Number(getElm1('total').value);
+
+            if (atp > 100 || ez + hd + ch + gl <= 0 || ez + hd + ch + gl > total || total == 0 || (atp / 100) / ((ez + hd + ch + gl) / total) > 1) {
+                al1();
+                return;
+            } else if (ez + hd + ch + gl != 0 && atp == 0) {
+                al1();
+                return;
+            } else if (ez + hd + ch + gl == 0 && atp != 0) {
+                al1();
+                return;
+            } else if (atp < 0 || ez < 0 || hd < 0 || ch < 0 || gl < 0) {
+                al1();
+                return;
+            } else {
+                var res = ((atp / 100) / ((ez + hd + ch + gl) / total) * 100).toFixed(2);
+                res2(res);
+                return;
+            }
+        }
+
+        function reset() {
+            result.innerHTML = str;
+            getElm1('atp').value = '';
+            getElm1('ez').value = '';
+            getElm1('hd').value = '';
+            getElm1('ch').value = '';
+            getElm1('gl').value = '';
+            getElm1('total').value = '';
+        }
+    </script>
 </body>
 
 </html>

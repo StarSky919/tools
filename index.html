@@ -5,6 +5,37 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style type="text/css">
+        .tools {
+            margin: 10px 0;
+            line-height: 50px;
+        }
+
+        .tools a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid var(--alpha1);
+            border-radius: 4px;
+            color: var(--color1);
+            background: var(--color2);
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+
+        .tools a:hover {
+            box-shadow: 2px 4px 8px var(--alpha1);
+        }
+
+        @media screen and (max-width: 768px) {
+            .tools a:hover {
+                box-shadow: none;
+            }
+
+            .tools a:active {
+                box-shadow: 2px 4px 8px var(--alpha1);
+            }
+        }
+    </style>
     <title>StarSky919的工具箱</title>
 </head>
 
@@ -19,7 +50,9 @@
         <div class="main">
             <div class="container">
                 <h2 id="h2">StarSky919的工具箱</h2>
-                <noscript><p>此浏览器不支持JavaScript，以下工具将无法运行！</p></noscript>
+                <noscript>
+                    <p>此浏览器不支持JavaScript，以下工具将无法运行！</p>
+                </noscript>
                 <div class="tools-container">
                     <div class="tools"><a href="bv2av/">AV & BV转换器</a></div>
                     <div class="tools"><a href="cy2calc/">Cytus II计算器</a></div>
@@ -34,4 +67,5 @@
     </div>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
+
 </html>

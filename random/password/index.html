@@ -5,6 +5,40 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="../../css/style.css" type="text/css">
+    <style type="text/css">
+        #length {
+            margin: -4px 0;
+            padding: 4px;
+            width: 3em;
+            font-size: 14px;
+            outline: none;
+            border: 1px solid var(--color3);
+            border-radius: 4px;
+        }
+
+        .conditions td {
+            padding: 8px 0;
+            line-height: 1em;
+        }
+
+        .conditions input[type=checkbox] {
+            display: none;
+        }
+
+        .conditions input+label {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            text-align: center;
+            color: transparent;
+            border: 1px solid var(--color3);
+            border-radius: 4px;
+        }
+
+        .conditions input:checked+label {
+            color: var(--color1);
+        }
+    </style>
     <title>密码生成器</title>
 </head>
 
@@ -24,13 +58,13 @@
                     <table>
                         <tr>
                             <td>密码长度：</td>
-                            <td><input type="number" class="in" id="length" onkeydown="check()" value="8" /></td>
+                            <td><input type="number" id="length" onkeydown="check()" value="8" /></td>
                         </tr>
                         <tr>
                             <td>大写字母：</td>
                             <td><label for="uc">A~Z</label></td>
                             <td>
-                                <input type="checkbox" id="uc" checked/>
+                                <input type="checkbox" id="uc" checked />
                                 <label for="uc">✓</label>
                             </td>
                         </tr>
@@ -46,7 +80,7 @@
                             <td>数字：</td>
                             <td><label for="num">0~9</label></td>
                             <td>
-                                <input type="checkbox" id="num" checked/>
+                                <input type="checkbox" id="num" checked />
                                 <label for="num">✓</label>
                             </td>
                         </tr>
@@ -70,7 +104,64 @@
         </div>
     </div>
     <script type="text/javascript" src="../../js/main.js"></script>
-    <script type="text/javascript" src="../js/password.js"></script>
+    <script type="text/javascript">
+        function check() {
+            setTimeout('var num = getElm1("length");if (Number(num.value) > 16) {num.value = 16;}', 1)
+        }
+
+        var str = {
+            uc: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            lc: "abcdefghijklmnopqrstuvwxyz",
+            num: '0123456789',
+            mark: '!?,.;:&#@%$+-*_='
+        }
+
+        function generate() {
+            var length = Number(getElm1('length').value);
+            var num = getElm1('num').checked;
+            var uc = getElm1('uc').checked;
+            var lc = getElm1('lc').checked;
+            var mark = getElm1('mark').checked;
+            var password = '';
+            while (password.length < length) {
+                var rdm1 = Math.ceil(Math.random() * 4);
+                var rdm2 = function(obj) {
+                    return Math.ceil(obj.length * Math.random() * Math.random()) - 1;
+                }
+                if (num || uc || lc || mark) {
+                    switch (rdm1) {
+                        case 1:
+                            if (uc) {
+                                password += str.uc.charAt(rdm2(str.uc));
+                            }
+                            break;
+                        case 2:
+                            if (lc) {
+                                password += str.lc.charAt(rdm2(str.lc));
+                            }
+                            break;
+                        case 3:
+                            if (num) {
+                                password += str.num.charAt(rdm2(str.num));
+                            }
+                            break;
+                        case 4:
+                            if (mark) {
+                                password += str.mark.charAt(rdm2(str.mark));
+                            }
+                            break;
+                    }
+                } else {
+                    break;
+                }
+            }
+            if (password.trim()) {
+                getElm1('result').innerHTML = '密码：' + password;
+            } else {
+                getElm1('result').innerHTML = '请设置选项';
+            }
+        }
+    </script>
 </body>
 
 </html>
