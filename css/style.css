@@ -1,10 +1,4 @@
-/*@font-face {
-    font-family: "SourceHanSerifCN";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(SourceHanSerifCN-Regular.ttf) format("truetype");
-}*/
+@import "font-awesome.css";
 
 :root {
     --color1: #000000;
@@ -18,10 +12,23 @@
     --alpha3: rgba(255, 255, 255, 0.18);
 }
 
+@font-face {
+    font-family: "ProductSans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/ProductSans-Regular.ttf) format("truetype");
+}
+
 * {
-    /*font-family: "SourceHanSerifCN", sans-serif;*/
+    font-family: "ProductSans";
+    letter-spacing: 0.025em;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+}
+
+*::selection {
+    background: rgba(152, 152, 255, 0.25)
 }
 
 body {
@@ -35,23 +42,45 @@ body {
     top: 0;
     background: var(--color4);
     height: 50px;
-    width: 100%;
-    overflow: hidden;
+    line-height: 50px;
+    width: 100vw;
     z-index: 9999;
 }
 
-.nav .title {
+#checkbox {
+    display: none;
+}
+
+.nav .menu {
+    float: left;
+    cursor: pointer;
     margin-left: 2.5%;
-    text-align: left;
+    color: var(--color2);
+}
+
+.nav .title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-weight: bold;
-    line-height: 50px;
+    color: var(--color2);
+}
+
+.nav .about,
+.nav .home {
+    float: right;
+    cursor: pointer;
+    margin-right: 2.5%;
+}
+
+.nav .about a,
+.nav .home a {
+    text-decoration: none;
     color: var(--color2);
 }
 
 .nav .box {
-    margin-right: calc(2.5% - 9px);
-    line-height: 50px;
-    float: right;
+    display: none;
 }
 
 .nav .items {
