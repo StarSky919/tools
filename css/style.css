@@ -140,7 +140,7 @@ body {
     transition: box-shadow 0.25s;
 }
 
-.it:focus {
+.input1:focus {
     box-shadow: 2px 4px 8px var(--alpha1);
 }
 

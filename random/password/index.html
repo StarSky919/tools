@@ -59,44 +59,44 @@
                 <h2>密码生成器</h2>
                 <p id="result">设置长度和选项来生成随机密码</p>
                 <form class="conditions">
-                    <table>
-                        <tr>
-                            <td>密码长度：</td>
-                            <td><input type="number" id="length" onkeydown="check()" value="8" /></td>
-                        </tr>
-                        <tr>
-                            <td>大写字母：</td>
-                            <td><label for="uc">A~Z</label></td>
-                            <td>
-                                <input type="checkbox" id="uc" checked />
-                                <label for="uc">✓</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>小写字母：</td>
-                            <td><label for="lc">a~z</label></td>
-                            <td>
-                                <input type="checkbox" id="lc" />
-                                <label for="lc">✓</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>数字：</td>
-                            <td><label for="num">0~9</label></td>
-                            <td>
-                                <input type="checkbox" id="num" checked />
-                                <label for="num">✓</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>符号：</td>
-                            <td><label for="mark">!?~=</label></td>
-                            <td>
-                                <input type="checkbox" id="mark" />
-                                <label for="mark">✓</label>
-                            </td>
-                        </tr>
-                    </table>
+                <table>
+                    <tr>
+                        <td>密码长度：</td>
+                        <td><input type="number" id="length" onkeydown="check()" value="8" /></td>
+                    </tr>
+                    <tr>
+                        <td>大写字母：</td>
+                        <td><label for="uc">A~Z</label></td>
+                        <td>
+                            <input type="checkbox" id="uc" checked />
+                            <label for="uc">✓</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>小写字母：</td>
+                        <td><label for="lc">a~z</label></td>
+                        <td>
+                            <input type="checkbox" id="lc" />
+                            <label for="lc">✓</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>数字：</td>
+                        <td><label for="num">0~9</label></td>
+                        <td>
+                            <input type="checkbox" id="num" checked />
+                            <label for="num">✓</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>符号：</td>
+                        <td><label for="mark">!?~=</label></td>
+                        <td>
+                            <input type="checkbox" id="mark" />
+                            <label for="mark">✓</label>
+                        </td>
+                    </tr>
+                </table>
                 </form>
                 <p class="button">
                     <a id="convert" onclick="generate()">生成</a>
@@ -110,7 +110,7 @@
     <script type="text/javascript" src="../../js/main.js"></script>
     <script type="text/javascript">
         function check() {
-            setTimeout('var num = getElm1("length");if (Number(num.value) > 16) {num.value = 16;}', 1)
+            setTimeout('var num = getElm1("length");if (Number(num.value) > 16) {num.value = 16;} if (Number(num.value < 0)) {num.value = 0}', 1);
         }
 
         var str = {
