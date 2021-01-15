@@ -166,7 +166,7 @@ p.button a {
     transition: box-shadow 0.25s;
 }
 
-p.button a:first-child {
+p.button a::first-child {
     margin: 0;
 }
 
