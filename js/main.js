@@ -5,3 +5,7 @@ function getElm1(id) {
 function getElm2(query) {
     return document.querySelector(query);
 }
+
+function getElm3(query) {
+    return document.querySelectorAll(query);
+}
