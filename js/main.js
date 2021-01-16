@@ -14,11 +14,16 @@ function getElm3(query) {
 
 /*────Fade In────*/
 
-setTimeout(function() {
-    getElm2('.row').classList.add('fade-in');
-}, 0);
+/*
+window.onload = function() {
+    setTimeout(function() {
+        getElm2('.row').classList.add('fade-in');
+    }, 0);
+}
 
-/*var href = location.href;
+//────────
+
+var href = location.href;
 
 var links = [
     'http://localhost:7700/index.html',
