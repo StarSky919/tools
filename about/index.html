@@ -11,15 +11,12 @@
         }
 
         .update {
-            /*--progress: 0;
-            opacity: var(--progress);*/
-            
             opacity: 0;
             transform: translateY(10%);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        
-        .fade-in {
+
+        .update.fade-in {
             opacity: 1;
             transform: none;
         }
@@ -75,7 +72,13 @@
                 <div class="yyyy">2021年</div>
                 <div class="mmdd">
                     <div class="title">1月17日</div>
-                    <div class="content"></div>
+                    <div class="content">
+                        1.新功能：
+                        <br>
+                        2.给页面做了动画
+                        <br>
+                        3.优化了一些没什么用的东西，增加了一些测试性的功能和代码
+                    </div>
                 </div>
                 <div class="mmdd">
                     <div class="title">1月15日</div>
@@ -115,30 +118,13 @@
     <!-- <script src="../js/canvas animation.js" type="text/javascript"></script> -->
     <script type="text/javascript">
         var html = document.documentElement;
-        var update = getElm2('.update');
-        //var boxes = getElm3('.box');
 
         document.addEventListener('scroll', (e) => {
-            if (html.scrollTop > 0) {
-                update.classList.add('fade-in');
+            if (html.scrollTop > getElm2('.about').offsetHeight) {
+                getElm2('.update').classList.add('fade-in');
             } else {
-                update.classList.remove('fade-in');
+                getElm2('.update').classList.remove('fade-in');
             }
-
-            //var scrolled = html.scrollTop / (html.scrollHeight - html.clientHeight);
-
-            /*var total = 1 / boxes.length;
-
-            for (var [index, box] of boxes.entries()) {
-                var start = total * index;
-                var end = total * (index + 1);
-
-                var progress = (scrolled - start) / (end - start);
-                if (progress >= 1) progress = 1;
-                if (progress <= 0) progress = 0;
-
-                box.style.setProperty('--progress', progress);
-            }*/
         });
     </script>
 </body>
