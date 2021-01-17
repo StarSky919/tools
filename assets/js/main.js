@@ -29,7 +29,7 @@ for (x in tools) {
     var a = tools;
     if (url.length > 5) {
         for (y in url) {
-            if (y >= 5) {
+            if (y >= 4) {
                 a[x][0] = '../' + a[x][0];
             }
         }
