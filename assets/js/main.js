@@ -23,7 +23,7 @@ let tools = [
     ['color/', '颜色工具']
 ]
 var html = '';
-let url = location.href.split('/');
+var url = location.href.split('/');
 
 for (x in tools) {
     var a = tools;
