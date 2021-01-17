@@ -25,11 +25,19 @@ let tools = [
 var html = '';
 var url = location.href.split('/');
 
+var int;
+
+if (url[2] == 'localhost:7700') {
+    int = 4;
+} else {
+    int = 5;
+}
+
 for (x in tools) {
     var a = tools;
-    if (url.length > 5) {
+    if (url.length > int) {
         for (y in url) {
-            if (y >= 4) {
+            if (y >= int - 1) {
                 a[x][0] = `../${a[x][0]}`;
             }
         }
