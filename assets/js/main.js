@@ -25,6 +25,7 @@ let tools = [
 var html = '';
 var url = location.href.split('/');
 
+/*Compatible*/
 var int;
 
 if (url[2] == 'localhost:7700') {
@@ -32,6 +33,7 @@ if (url[2] == 'localhost:7700') {
 } else {
     int = 5;
 }
+
 
 for (x in tools) {
     var a = tools;
