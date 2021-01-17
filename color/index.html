@@ -74,12 +74,12 @@
     </div>
     <script type="text/javascript" src="../assets/js/main.js"></script>
     <script type="text/javascript">
-        var regex = {
+        let regex = {
             rgb: /[^0-9]/g,
             hex: /[^0-9A-Fa-f]/g
         }
 
-        var check = {
+        let check = {
             rgb: function(obj) {
                 if (Number(obj.value) > 255) {
                     obj.value = 255;
@@ -101,13 +101,13 @@
 
         var convert = {
             toHEX: function() {
-                var r = getElm1('red').value;
-                var g = getElm1('green').value;
-                var b = getElm1('blue').value;
+                let r = getElm1('red').value;
+                let g = getElm1('green').value;
+                let b = getElm1('blue').value;
                 if (r.length < 1) return;
                 if (g.length < 1) return;
                 if (b.length < 1) return;
-                var hex = ((1 << 24) + (Number(r) << 16) + (Number(g) << 8) + Number(b)).toString(16).toUpperCase().slice(1);
+                let hex = ((1 << 24) + (Number(r) << 16) + (Number(g) << 8) + Number(b)).toString(16).toUpperCase().slice(1);
                 getElm1('hex').value = hex;
                 getElm2('.color').style.background = '#' + hex;
             },
@@ -122,17 +122,15 @@
 
         function execute(obj) {
             if (obj.id == 'hex') {
-                function e() {
+                setTimeout(function() {
                     check.hex(obj);
                     convert.toRGB(obj.value);
-                }
-                setTimeout(e, 1);
+                }, 1);
             } else {
-                function e() {
+                setTimeout(function() {
                     check.rgb(obj);
                     convert.toHEX();
-                }
-                setTimeout(e, 1);
+                }, 1);
             }
         }
     </script>

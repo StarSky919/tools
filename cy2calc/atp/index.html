@@ -49,7 +49,7 @@
     <script type="text/javascript" src="../../assets/js/main.js"></script>
     <script type="text/javascript" src="../../assets/js/cy2calc.js"></script>
     <script type="text/javascript">
-        var atp, ez, hd, ch, gl, total;
+        let atp, ez, hd, ch, gl, total;
 
         function calc() {
             atp = Number(getElm1('atp').value);
@@ -72,7 +72,7 @@
                 al1();
                 return;
             } else {
-                var res = ((atp / 100) / ((ez + hd + ch + gl) / total) * 100).toFixed(2);
+                let res = ((atp / 100) / ((ez + hd + ch + gl) / total) * 100).toFixed(2);
                 res2(res);
                 return;
             }

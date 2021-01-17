@@ -111,10 +111,10 @@
     <script type="text/javascript" src="../../assets/js/main.js"></script>
     <script type="text/javascript">
         function check() {
-            setTimeout('var num = getElm1("length");if (Number(num.value) > 16) {num.value = 16;} if (Number(num.value < 0)) {num.value = 0}', 1);
+            setTimeout('let num = getElm1("length");if (Number(num.value) > 16) {num.value = 16;} if (Number(num.value < 0)) {num.value = 0}', 1);
         }
 
-        var str = {
+        let str = {
             uc: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
             lc: "abcdefghijklmnopqrstuvwxyz",
             num: '0123456789',
@@ -122,15 +122,15 @@
         }
 
         function generate() {
-            var length = Number(getElm1('length').value);
-            var num = getElm1('num').checked;
-            var uc = getElm1('uc').checked;
-            var lc = getElm1('lc').checked;
-            var mark = getElm1('mark').checked;
+            let length = Number(getElm1('length').value);
+            let num = getElm1('num').checked;
+            let uc = getElm1('uc').checked;
+            let lc = getElm1('lc').checked;
+            let mark = getElm1('mark').checked;
             var password = '';
             while (password.length < length) {
-                var rdm1 = Math.ceil(Math.random() * 4);
-                var rdm2 = function(obj) {
+                let rdm1 = Math.ceil(Math.random() * 4);
+                let rdm2 = function(obj) {
                     return Math.ceil(obj.length * Math.random() * Math.random()) - 1;
                 }
                 if (num || uc || lc || mark) {
@@ -161,7 +161,7 @@
                 }
             }
             if (password.trim()) {
-                getElm1('result').innerHTML = '密码：' + password;
+                getElm1('result').innerHTML = `密码：${password}`;
             } else {
                 getElm1('result').innerHTML = '请设置选项';
             }

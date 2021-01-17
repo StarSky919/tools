@@ -48,7 +48,7 @@
     <script type="text/javascript" src="../assets/js/main.js"></script>
     <script type="text/javascript" src="../assets/js/cy2calc.js"></script>
     <script type="text/javascript">
-        var stp, perfect, good, bad, miss;
+        let stp, perfect, good, bad, miss;
 
         function calc() {
             stp = Number(getElm1('stp').value);
@@ -72,7 +72,7 @@
                     return;
                 }
             } else {
-                var res = grCalc(stp, perfect, good, bad, miss);
+                let res = grCalc(stp, perfect, good, bad, miss);
                 if (res < 0 || res > perfect) {
                     al1();
                     return;

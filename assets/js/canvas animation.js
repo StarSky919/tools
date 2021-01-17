@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function() {
     function defineProperties(target, props) {
@@ -6,14 +6,14 @@ var _createClass = function() {
             var descriptor = props[i];
             descriptor.enumerable = descriptor.enumerable || false;
             descriptor.configurable = true;
-            if ("value" in descriptor) descriptor.writable = true;
+            if ('value' in descriptor) descriptor.writable = true;
             Object.defineProperty(target, descriptor.key, descriptor);
         }
     }
     return function(Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; };
 }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 var Progress = function() {
     function Progress() {
@@ -55,7 +55,7 @@ var Progress = function() {
     };
 
     _createClass(Progress, null, [{
-        key: "CONST",
+        key: 'CONST',
         get: function get() {
             return {
                 DURATION: 1000
@@ -71,8 +71,8 @@ var Confetti = function() {
         _classCallCheck(this, Confetti);
 
         this.parent = param.elm || document.body;
-        this.canvas = document.createElement("canvas");
-        this.ctx = this.canvas.getContext("2d");
+        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
         this.width = param.width || this.parent.offsetWidth;
         this.height = param.height || this.parent.offsetHeight;
         this.length = param.length || Confetti.CONST.PAPER_LENGTH;
@@ -81,11 +81,11 @@ var Confetti = function() {
             duration: param.duration,
             isLoop: true
         });
-        this.rotationRange = typeof param.rotationLength === "number" ? param.rotationRange : 10;
-        this.speedRange = typeof param.speedRange === "number" ? param.speedRange : 10;
+        this.rotationRange = typeof param.rotationLength === 'number' ? param.rotationRange : 10;
+        this.speedRange = typeof param.speedRange === 'number' ? param.speedRange : 10;
         this.sprites = [];
 
-        this.canvas.style.cssText = ["display: block", "position: absolute", "top: 0", "left: 0", "pointer-events: none"].join(";");
+        this.canvas.style.cssText = ['display: block', 'position: absolute', 'top: 0', 'left: 0', 'pointer-events: none'].join(';');
 
         this.render = this.render.bind(this);
 
@@ -99,8 +99,8 @@ var Confetti = function() {
 
     Confetti.prototype.build = function build() {
         for (var i = 0; i < this.length; ++i) {
-            var canvas = document.createElement("canvas"),
-                ctx = canvas.getContext("2d");
+            var canvas = document.createElement('canvas'),
+                ctx = canvas.getContext('2d');
 
             canvas.width = Confetti.CONST.SPRITE_WIDTH;
             canvas.height = Confetti.CONST.SPRITE_HEIGHT;
@@ -140,7 +140,7 @@ var Confetti = function() {
     };
 
     _createClass(Confetti, null, [{
-        key: "CONST",
+        key: 'CONST',
         get: function get() {
             return {
                 SPRITE_WIDTH: 9,
@@ -148,7 +148,7 @@ var Confetti = function() {
                 PAPER_LENGTH: 100,
                 DURATION: 8000,
                 ROTATION_RATE: 50,
-                COLORS: ["#EF5350", "#EC407A", "#AB47BC", "#7E57C2", "#5C6BC0", "#42A5F5", "#29B6F6", "#26C6DA", "#26A69A", "#66BB6A", "#9CCC65", "#D4E157", "#FFEE58", "#FFCA28", "#FFA726", "#FF7043", "#8D6E63", "#BDBDBD", "#78909C"]
+                COLORS: ['#EF5350', '#EC407A', '#AB47BC', '#7E57C2', '#5C6BC0', '#42A5F5', '#29B6F6', '#26C6DA', '#26A69A', '#66BB6A', '#9CCC65', '#D4E157', '#FFEE58', '#FFCA28', '#FFA726', '#FF7043', '#8D6E63', '#BDBDBD', '#78909C']
             };
         }
   }]);

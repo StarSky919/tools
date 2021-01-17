@@ -10,9 +10,9 @@ function al2() {
 }
 
 function res1(res) {
-    result.innerHTML = '您的小P数量为：' + res;
+    result.innerHTML = `您的小P数量为：${res}`;
 }
 
 function res2(res) {
-    result.innerHTML = '您的已通关歌曲平均TP为' + res + '%';
+    result.innerHTML = `您的已通关歌曲平均TP为${res}%`;
 }

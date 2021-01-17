@@ -40,17 +40,17 @@
     <script type="text/javascript">
         'use strict'
 
-        const result = document.getElementById('result');
-        const ab = document.getElementById('ab');
+        let result = document.getElementById('result');
+        let ab = document.getElementById('ab');
 
-        const password = "fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF";
+        let password = "fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF";
         var array = {};
         for (let i = 0; i < 58; i++) {
             array[password[i]] = i;
         }
-        const enable_code = [9, 8, 1, 6, 2, 4];
-        const password1 = 177451812;
-        const password2 = 8728348608;
+        let enable_code = [9, 8, 1, 6, 2, 4];
+        let password1 = 177451812;
+        let password2 = 8728348608;
 
         function convert() {
             let input_value = ab.value;
