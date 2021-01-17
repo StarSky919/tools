@@ -185,6 +185,7 @@ p.button.left {
 }
 
 p.copyright {
+    margin: 16px 0;
     font-size: 12px;
 }
 
