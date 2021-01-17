@@ -27,14 +27,14 @@ var url = location.href.split('/');
 
 for (x in tools) {
     var a = tools;
-    if (url.length > 4) {
+    if (url.length > 5) {
         for (y in url) {
-            if (y >= 4) {
+            if (y >= 5) {
                 a[x][0] = '../' + a[x][0];
             }
         }
     }
-    html += `<a href=\"${a[x][0]}\">${a[x][1]}</a>`;
+    html += `<a href=\"tools/${a[x][0]}\">${a[x][1]}</a>`;
 }
 getElm2('.nav .items').innerHTML = html;
 
