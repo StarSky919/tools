@@ -109,15 +109,6 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     -ms-flex-wrap: wrap;
-
-    /*opacity: 0;
-    transform: translateY(10%);*/
-}
-
-.row.fade-in {
-    opacity: 1;
-    transform: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .main {
