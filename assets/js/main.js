@@ -34,7 +34,7 @@ for (x in tools) {
             }
         }
     }
-    html += `<a href=\"tools/${a[x][0]}\">${a[x][1]}</a>`;
+    html += `<a href=\"${a[x][0]}\">${a[x][1]}</a>`;
 }
 getElm2('.nav .items').innerHTML = html;
 
