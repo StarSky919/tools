@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <style type="text/css">
-        .tools {
-            margin: 10px 0;
-            line-height: 50px;
-        }
-
         .tools a {
             display: block;
+            margin: 10px 0;
+            line-height: 50px;
             text-align: center;
             text-decoration: none;
             border: 1px solid var(--alpha1);
@@ -27,6 +24,7 @@
         }
     </style>
     <title>StarSky919的工具箱</title>
+    <meta name="description" content="StarSky919的网页工具箱！" />
 </head>
 
 <body>
@@ -35,36 +33,32 @@
         <label for="checkbox" class="menu">
             <i class="fa fa-bars"></i>
         </label>
+        <div class="items"></div>
         <span class="about">
             <a href="about/" class="fa fa-ellipsis-h"></a>
         </span>
-        <div class="box">
-            <div class="items"><a href="about/">关于</a></div>
-            <div class="items"><a href=""></a></div>
-            <div class="items"><a href=""></a></div>
-        </div>
         <span class="title">StarSky919's Toolbox</span>
     </div>
-    <div class="row">
+    <div class="row" onclick="closeMenu()">
         <div class="main">
-            <h2 id="h2">StarSky919的工具箱</h2>
+            <h2>StarSky919的工具箱</h2>
             <noscript>
                 <p>此浏览器不支持JavaScript，以下工具将无法运行！</p>
             </noscript>
-            <div class="tools-container">
-                <div class="tools" style="--i:1"><a href="bv2av/">AV & BV转换器</a></div>
-                <div class="tools" style="--i:2"><a href="cy2calc/">Cytus II计算器</a></div>
-                <div class="tools" style="--i:3"><a href="random/password/">密码生成器</a></div>
-                <div class="tools" style="--i:4"><a href="color/">颜色工具</a></div>
-                <div class="tools" style="--i:5"><a href="#">/</a></div>
-                <div class="tools" style="--i:6"><a href="#">/</a></div>
-            </div>
+            <div class="tools"></div>
             <p class="copyright">
                 <i class="fa fa-copyright"></i> 2021 StarSky919
             </p>
         </div>
     </div>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+        var b = '';
+        for (i in tools) {
+            b += `<a href=\"${tools[i][0]}\">${tools[i][1]}</a>`
+        }
+        getElm2('.tools').innerHTML = b;
+    </script>
 </body>
 
 </html>

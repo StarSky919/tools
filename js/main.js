@@ -1,4 +1,4 @@
-/*────Cutom Functions────*/
+/*START: Cutom Functions*/
 
 function getElm1(id) {
     return document.getElementById(id);
@@ -12,30 +12,38 @@ function getElm3(query) {
     return document.querySelectorAll(query);
 }
 
-/*────Fade In────*/
+/*END: Custom Functions*/
 
-/*
-window.onload = function() {
-    setTimeout(function() {
-        getElm2('.row').classList.add('fade-in');
-    }, 0);
+/*START: Navigation Bar*/
+
+let tools = [
+    ['bv2av/', 'AV & BV 转换器'],
+    ['cy2calc/', 'Cytus II计算器'],
+    ['random/password/', '密码生成器'],
+    ['color/', '颜色工具']
+]
+var html = '';
+var url = location.href.split('/');
+
+for (x in tools) {
+    var a = tools;
+    if (url.length > 4) {
+        for (y in url) {
+            if (y >= 4) {
+                a[x][0] = '../' + a[x][0];
+            }
+        }
+    }
+    html += `<a href=\"${a[x][0]}\">${a[x][1]}</a>`;
+}
+getElm2('.nav .items').innerHTML = html;
+
+window.onbeforeunload = function() {
+    closeMenu();
 }
 
-//────────
+function closeMenu() {
+    getElm1('checkbox').checked = false;
+}
 
-var href = location.href;
-
-var links = [
-    'http://localhost:7700/index.html',
-    'https://starsky919.github.io/tools/index.html',
-    'https://starsky919.gitee.io/tools/index.html'
-];
-
-if (href != links[0] && href != links[1] && href != links[2]) {
-    setTimeout(function() {
-        getElm2('.row').classList.add('fade-in');
-    }, 0);
-} else {
-    getElm2('.row').style.transition = 'none';
-    getElm2('.row').classList.add('fade-in');
-}*/
+/*END: Navigation Bar*/
