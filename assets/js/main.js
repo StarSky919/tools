@@ -30,10 +30,10 @@ for (x in tools) {
     if (url.length > 5) {
         for (y in url) {
             if (y >= 4) {
-                a[x][0] = '../' + a[x][0];
+                a[x][0] = `../${a[x][0]}`;
             }
         }
-        a[x][0]= 'tools/' + a[x][0];
+        a[x][0] = `tools/${a[x][0]}`;
     }
     html += `<a href=\"${a[x][0]}\">${a[x][1]}</a>`;
 }
