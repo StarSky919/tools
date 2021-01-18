@@ -68,13 +68,13 @@
         </span>
         <span class="title">Test</span>
     </div>
-    <div class="row" onclick="closeMenu()">
+    <div class="row">
         <div class="main">
             <h2>测试页面</h2>
             <div class="toggle">
-                <span>开关1</span>
-                <label for="t1">
-                    <input type="checkbox" id="t1" />
+                <span>深色模式</span>
+                <label for="darkMode">
+                    <input type="checkbox" id="darkMode" />
                     <span></span>
                 </label>
             </div>
@@ -99,6 +99,20 @@
     </div>
     <script type="text/javascript" src="../assets/js/main.js"></script>
     <script type="text/javascript">
+        var dark = getElm1('darkMode');
+
+        if (getCookie('darkMode') == 'open') {
+            dark.checked = true;
+        }
+
+        dark.onclick = function() {
+            if (dark.checked) {
+                setCookie('darkMode', 'open', 365);
+            } else {
+                setCookie('darkMode', 'off', 365);
+            }
+            toggleDarkMode();
+        }
     </script>
 </body>
 
