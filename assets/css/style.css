@@ -12,19 +12,33 @@
     --blue: #9898FF;
     --red: #FEA29F;
 
-    --black-alpha1: rgba(0, 0, 0, 0.24);
-    --black-alpha2: rgba(0, 0, 0, 0.60);
-    --white-alpha1: rgba(255, 255, 255, 0.24);
-    --white-alpha2: rgba(255, 255, 255, 0.60);
+    --black-alpha1: rgba(0, 0, 0, 0.18);
+    --black-alpha2: rgba(0, 0, 0, 0.24);
+    --black-alpha3: rgba(0, 0, 0, 0.60);
+    --white-alpha1: rgba(255, 255, 255, 0.18);
+    --white-alpha2: rgba(255, 255, 255, 0.24);
+    --white-alpha3: rgba(255, 255, 255, 0.60);
 
     --main-background: var(--white1);
     --nav-background: var(--navy);
+    --menu-background: var(--black-alpha3);
     --text-color: var(--black1);
     --nav-text-color: var(--white1);
-    --border-color: var(--black-alpha1);
+    --border-color: var(--black-alpha2);
     --title-border: var(--white2);
-    --shadow-color: var(--black-alpha1);
+    --shadow-color: var(--black-alpha2);
     --placeholder: #A0A0A0;
+}
+
+.dark-mode {
+    --main-background: var(--black2);
+    --nav-background: var(--black3);
+    --menu-background: var(--black2);
+    --text-color: var(--white1);
+    --nav-text-color: var(--white1);
+    --border-color: var(--white-alpha3);
+    --title-border: var(--white1);
+    --shadow-color: var(--white-alpha2);
 }
 
 @font-face {
@@ -43,7 +57,7 @@
 }
 
 *::selection {
-    background: rgba(152, 152, 255, 0.25)
+    background: rgba(152, 152, 255, 0.35)
 }
 
 body {
@@ -95,20 +109,26 @@ body {
 }
 
 .nav .items {
-    position: fixed;
+    position: absolute;
     overflow: scroll;
     width: 65vw;
     height: calc(100vh - 50px);
     line-height: 50px;
     top: 50px;
     left: -100%;
-    background: var(--black-alpha2);
+    color: var(--nav-text-color);
+    background: var(--menu-background);
     transition: left 0.5s ease;
+}
+
+.dark-mode .nav .items {
+    box-shadow: 2px 4px 8px var(--black-alpha3);
 }
 
 .nav #checkbox:checked+.menu {
     transform: rotate(-90deg);
 }
+
 .nav #checkbox:checked~.items {
     left: 0;
 }
@@ -126,8 +146,12 @@ body {
 
 .nav .items a:hover {
     color: var(--blue);
-    background: var(--black-alpha1);
+    background: var(--black-alpha2);
     border-left-color: var(--blue);
+}
+
+.dark-mode .nav .items a:hover {
+    background: var(--white-alpha1);
 }
 
 .row {
@@ -231,16 +255,6 @@ p.button.left {
 p.copyright {
     margin: 16px 0;
     font-size: 12px;
-}
-
-.dark-mode {
-    --main-background: var(--black2);
-    --nav-background: var(--black3);
-    --text-color: var(--white1);
-    --nav-text-color: var(--white1);
-    --border-color: var(--white-alpha2);
-    --title-border: var(--white1);
-    --shadow-color: var(--white-alpha1);
 }
 
 @media screen and (max-width: 768px) {
