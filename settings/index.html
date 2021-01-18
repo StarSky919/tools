@@ -26,7 +26,7 @@
             /*something...*/
         }
 
-        .toggle input[type=checkbox] {
+        .toggle input {
             display: none;
         }
 
@@ -37,7 +37,7 @@
             height: 90%;
             border-radius: 4px;
             background: var(--toggle-background);
-            transition: background 0.25s ease;
+            transition: background 0.25s ease, filter 0.25s ease;
         }
 
         .toggle label span::before {
@@ -53,15 +53,19 @@
             transition: transform 0.25s ease;
         }
 
-        .toggle input[type=checkbox]:checked+span {
+        .toggle input:checked+span {
             background: var(--blue);
         }
 
-        .toggle input[type=checkbox]:checked+span::before {
+        .toggle input:checked+span::before {
             transform: translateX(calc(50% + 45% + 12.5%));
         }
+
+        .toggle input:disabled+span {
+            filter: brightness(75%);
+        }
     </style>
-    <title>测试页面</title>
+    <title>网站设置</title>
 </head>
 
 <body>
@@ -74,29 +78,31 @@
         <span class="home">
             <a href="../" class="fa fa-home"></a>
         </span>
-        <span class="title">Test</span>
+        <span class="title">Settings</span>
     </div>
     <div class="row">
         <div class="main">
-            <h2>测试页面</h2>
+            <h2>网站设置</h2>
+            <div class="title">深色模式</div>
             <div class="toggle">
-                <span>深色模式</span>
+                <span>启用深色模式</span>
                 <label for="darkMode">
                     <input type="checkbox" id="darkMode" />
                     <span></span>
                 </label>
             </div>
             <div class="toggle">
-                <span>开关2</span>
-                <label for="t2">
-                    <input type="checkbox" id="t2" />
+                <span>自动开启（22:00 ~ 6:00）</span>
+                <label for="autoDM">
+                    <input type="checkbox" id="autoDM" />
                     <span></span>
                 </label>
             </div>
-            <div class="toggle circle">
-                <span>开关3</span>
-                <label for="t3">
-                    <input type="checkbox" id="t3">
+            <div class="title">其他设置</div>
+            <div class="toggle">
+                <span>密码生成器无限长度</span>
+                <label for="unlimited">
+                    <input type="checkbox" id="unlimited">
                     <span></span>
                 </label>
             </div>
@@ -107,7 +113,19 @@
     </div>
     <script type="text/javascript" src="../assets/js/main.js"></script>
     <script type="text/javascript">
+        /*START: Dark Mode*/
+
         var dark = getElm1('darkMode');
+        var auto = getElm1('autoDM');
+
+        if (getCookie('autoDM') == 'open') {
+            dark.disabled = true;
+            if (time()) {
+                dark.checked = true;
+            } else {
+                dark.checked = false;
+            }
+        }
 
         if (getCookie('darkMode') == 'open') {
             dark.checked = true;
@@ -119,7 +137,36 @@
             } else {
                 setCookie('darkMode', 'off', 365);
             }
-            toggleDarkMode();
+            darkMode.toggle();
+        }
+
+        if (getCookie('autoDM') == 'open') {
+            auto.checked = true;
+        }
+
+        auto.onclick = function() {
+            if (auto.checked) {
+                setCookie('autoDM', 'open', 365);
+            } else {
+                setCookie('autoDM', 'off', 365);
+            }
+            darkMode.auto();
+        }
+
+        /*END: Dark Mode*/
+
+        var limit = getElm1('unlimited');
+
+        if (getCookie('unlimited') == 'open') {
+            limit.checked = true;
+        }
+
+        limit.onclick = function() {
+            if (limit.checked) {
+                setCookie('unlimited', 'open', 365);
+            } else {
+                setCookie('unlimited', 'off', 365)
+            }
         }
     </script>
 </body>

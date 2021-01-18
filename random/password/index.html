@@ -8,8 +8,17 @@
     <link rel="shortcut icon" href="../../assets/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../assets/css/style.css" type="text/css">
     <style type="text/css">
+        #result:disabled {
+            width: 100%;
+            line-height: 16px;
+            color: var(--text-color);
+            background: none;
+            outline: none;
+            border: none;
+        }
+
         #length {
-            width: 3em;
+            width: 6em;
             margin: -4px 0;
             padding: 4px;
             color: var(--text-color);
@@ -60,7 +69,10 @@
     <div class="row">
         <div class="main">
             <h2>密码生成器</h2>
-            <p id="result">设置长度和选项来生成随机密码</p>
+            <p>
+                <!-- <input type="text" id="result" value="设置长度和选项来生成随机密码" disabled/> -->
+                <textarea id="result" rows="1" wrap="physical" disabled>设置长度和选项来生成随机密码</textarea>
+            </p>
             <form class="conditions">
                 <table>
                     <tr>
@@ -112,7 +124,21 @@
     <script type="text/javascript" src="../../assets/js/main.js"></script>
     <script type="text/javascript">
         function check() {
-            setTimeout('var num = getElm1("length");if (Number(num.value) > 16) {num.value = 16;} if (Number(num.value < 0)) {num.value = 0}', 1);
+            setTimeout(function() {
+                var num = getElm1("length");
+                if (Number(num.value) > 16 && getCookie('unlimited') == 'off') {
+                    num.value = 16;
+                }
+                if (Number(num.value < 0)) {
+                    num.value = 0;
+                }
+            }, 1);
+        }
+
+        function autoHeight() {
+            var text = getElm1('result');
+            text.style.height = "inherit";
+            text.style.height = text.scrollHeight + "px";
         }
 
         let str = {
@@ -162,10 +188,11 @@
                 }
             }
             if (password.trim()) {
-                getElm1('result').innerHTML = `密码：${password}`;
+                getElm1('result').value = `密码：${password}`;
             } else {
-                getElm1('result').innerHTML = '请设置选项';
+                getElm1('result').value = '请设置选项';
             }
+            autoHeight();
         }
     </script>
 </body>

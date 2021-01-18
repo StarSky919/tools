@@ -35,6 +35,10 @@ function getCookie(cname) {
     return "";
 }
 
+function time() {
+    return new Date().getHours() >= 22 || new Date().getHours() < 6;
+}
+
 /*END: Custom Functions*/
 
 /*START: Navigation Bar*/
@@ -44,7 +48,7 @@ let tools = [
     ['cy2calc/', 'Cytus II计算器'],
     ['random/password/', '密码生成器'],
     ['color/', '颜色工具'],
-    ['settings/', '测试页面']
+    ['settings/', '网站设置']
 ]
 var html = '';
 var url = location.href.split('/');
@@ -70,6 +74,7 @@ for (x in tools) {
     }
     html += `<a href=\"${a[x][0]}\">${a[x][1]}</a>`;
 }
+
 getElm2('.nav .items').innerHTML = html;
 
 window.onbeforeunload = function() {
@@ -88,14 +93,38 @@ function closeMenu() {
 
 /*START: Dark Mode*/
 
-function toggleDarkMode() {
-    if (getCookie('darkMode') == 'open') {
-        getElm2('body').classList.add('dark-mode');
-    } else {
-        getElm2('body').classList.remove('dark-mode');
+let darkMode = {
+    toggle: function() {
+        if (getCookie('darkMode') == 'open') {
+            getElm2('body').classList.add('dark-mode');
+        } else {
+            getElm2('body').classList.remove('dark-mode');
+        }
+    },
+    auto: function() {
+        if (getCookie('autoDM') == 'open') {
+            dark.disabled = true;
+            if (time()) {
+                setCookie('darkMode', 'open', 365);
+                dark.checked = true;
+                darkMode.toggle();
+            }
+        } else {
+            dark.disabled = false;
+        }
+    },
+    check: function() {
+        if (getCookie('autoDM') == 'open') {
+            if (time()) {
+                setCookie('darkMode', 'open', 365);
+            } else {
+                setCookie('darkMode', 'off', 365);
+            }
+        }
     }
 }
 
-toggleDarkMode();
+darkMode.check();
+darkMode.toggle();
 
 /*END: Dark Mode*/
