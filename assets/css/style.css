@@ -166,7 +166,7 @@ body {
     padding: 5%;
 }
 
-.main .title {
+.main>.title {
     margin: 16px 0;
     padding-bottom: 6px;
     border-bottom: 1px solid var(--title-border);
