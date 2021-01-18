@@ -20,7 +20,8 @@ let tools = [
     ['bv2av/', 'AV & BV 转换器'],
     ['cy2calc/', 'Cytus II计算器'],
     ['random/password/', '密码生成器'],
-    ['color/', '颜色工具']
+    ['color/', '颜色工具'],
+    ['test/', '测试页面']
 ]
 var html = '';
 var url = location.href.split('/');
