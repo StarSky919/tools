@@ -8,6 +8,14 @@
     <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
     <style type="text/css">
+        :root {
+            --toggle-background: var(--white2);
+        }
+
+        .dark-mode {
+            --toggle-background: var(--black3);
+        }
+
         .toggle {
             display: flex;
             justify-content: space-between;
@@ -28,7 +36,7 @@
             width: 50px;
             height: 90%;
             border-radius: 4px;
-            background: var(--color3);
+            background: var(--toggle-background);
             transition: background 0.25s ease;
         }
 
@@ -41,12 +49,12 @@
             top: 12.5%;
             transform: translateX(12.5%);
             border-radius: 4px;
-            background: var(--color2);
+            background: var(--white1);
             transition: transform 0.25s ease;
         }
 
         .toggle input[type=checkbox]:checked+span {
-            background: var(--color5);
+            background: var(--blue);
         }
 
         .toggle input[type=checkbox]:checked+span::before {

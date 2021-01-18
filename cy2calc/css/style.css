@@ -4,12 +4,12 @@
     width: 100vw;
     height: 50px;
     line-height: 50px;
-    background: var(--color4);
+    background: var(--nav-background);
     z-index: 9996;
 }
 
 .footer a {
-    color: var(--color2);
+    color: var(--nav-text-color);
     text-decoration: none;
 }
 
@@ -17,7 +17,7 @@
 .footer .atp {
     width: 50vw;
     height: 50px;
-    border-bottom: 4px solid var(--color3);
+    border-bottom: 4px solid var(--white2);
     text-align: center;
 }
 
@@ -30,5 +30,5 @@
 }
 
 .footer .active {
-    border-bottom-color: var(--color5);
+    border-bottom-color: var(--blue);
 }
