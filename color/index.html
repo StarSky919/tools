@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="icon" href="../assets/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
+    <style type="text/css">
+        .main .title {
+            margin: 16px 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--title-border);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .converter .text.rh {
+            width: 3em;
+        }
+
+        .color {
+            width: 100%;
+            height: 64px;
+            margin: 16px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px
+        }
+
+        #hex {
+            width: 6em;
+        }
+    </style>
+    <title>颜色工具</title>
+</head>
+
+<body>
+    <div class="nav">
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" class="menu">
+            <i class="fa fa-bars"></i>
+        </label>
+        <div class="items"></div>
+        <span class="home">
+            <a href="../" class="fa fa-home"></a>
+        </span>
+        <span class="title">Color Tools</span>
+    </div>
+    <div class="row">
+        <div class="main">
+            <h2>颜色工具</h2>
+            <div class="title">颜色转换</div>
+            <p>输入RGB或HEX即可实时预览和转换</p>
+            <div class="converter">
+                <div>
+                    RGB：
+                    <input type="text" id="red" class="text rh" placeholder="R" onkeydown="execute(this)">
+                    <input type="text" id="green" class="text rh" placeholder="G" onkeydown="execute(this)">
+                    <input type="text" id="blue" class="text rh" placeholder="B" onkeydown="execute(this)">
+                </div>
+                <div>
+                    HEX：
+                    <span>#</span>
+                    <input type="text" id="hex" class="text" placeholder="HEX" onkeydown="execute(this)">
+                </div>
+            </div>
+            <div class="color"></div>
+            <!-- <div class="title">颜色表</div> -->
+            <p class="copyright">
+                <i class="fa fa-copyright"></i> 2021 StarSky919
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="../assets/js/main.js"></script>
+    <script type="text/javascript">
+        let regex = {
+            rgb: /[^0-9]/g,
+            hex: /[^0-9A-Fa-f]/g
+        }
+
+        let check = {
+            rgb: function(obj) {
+                if (Number(obj.value) > 255) {
+                    obj.value = 255;
+                }
+                if (regex.rgb.test(obj.value)) {
+                    obj.value = obj.value.replace(regex.rgb, '');
+                }
+            },
+            hex: function(obj) {
+                if (obj.value.length > 6) {
+                    obj.value = obj.value.slice(0, 6);
+                }
+                if (regex.hex.test(obj.value)) {
+                    obj.value = obj.value.replace(regex.hex, '');
+                }
+
+            }
+        }
+
+        var convert = {
+            toHEX: function() {
+                let r = getElm1('red').value;
+                let g = getElm1('green').value;
+                let b = getElm1('blue').value;
+                if (r.length < 1) return;
+                if (g.length < 1) return;
+                if (b.length < 1) return;
+                let hex = ((1 << 24) + (Number(r) << 16) + (Number(g) << 8) + Number(b)).toString(16).toUpperCase().slice(1);
+                getElm1('hex').value = hex;
+                getElm2('.color').style.background = '#' + hex;
+            },
+            toRGB: function(hex) {
+                if (hex.length < 6) return;
+                getElm1('red').value = parseInt('0x' + hex.slice(0, 2));
+                getElm1('green').value = parseInt('0x' + hex.slice(2, 4));
+                getElm1('blue').value = parseInt('0x' + hex.slice(4, 6));
+                getElm2('.color').style.background = '#' + hex;
+            }
+        }
+
+        function execute(obj) {
+            if (obj.id == 'hex') {
+                setTimeout(function() {
+                    check.hex(obj);
+                    convert.toRGB(obj.value);
+                }, 1);
+            } else {
+                setTimeout(function() {
+                    check.rgb(obj);
+                    convert.toHEX();
+                }, 1);
+            }
+        }
+    </script>
+</body>
+
+</html>

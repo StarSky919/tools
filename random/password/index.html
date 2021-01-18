@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="icon" href="../../assets/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/style.css" type="text/css">
+    <style type="text/css">
+        #length {
+            width: 3em;
+            margin: -4px 0;
+            padding: 4px;
+            outline: none;
+            border: 1px solid var(--color3);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .conditions td {
+            line-height: 1em;
+            padding: 8px 0;
+        }
+
+        .conditions input[type=checkbox] {
+            display: none;
+        }
+
+        .conditions input+label {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            color: transparent;
+            border: 1px solid var(--color3);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .conditions input:checked+label {
+            color: var(--color1);
+        }
+    </style>
+    <title>密码生成器</title>
+</head>
+
+<body>
+    <div class="nav">
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" class="menu">
+            <i class="fa fa-bars"></i>
+        </label>
+        <div class="items"></div>
+        <span class="home">
+            <a href="../../" class="fa fa-home"></a>
+        </span>
+        <span class="title">Password Generator</span>
+    </div>
+    <div class="row">
+        <div class="main">
+            <h2>密码生成器</h2>
+            <p id="result">设置长度和选项来生成随机密码</p>
+            <form class="conditions">
+                <table>
+                    <tr>
+                        <td>密码长度：</td>
+                        <td><input type="number" id="length" onkeydown="check()" value="8" /></td>
+                    </tr>
+                    <tr>
+                        <td>大写字母：</td>
+                        <td><label for="uc">A~Z</label></td>
+                        <td>
+                            <input type="checkbox" id="uc" checked />
+                            <label for="uc">✓</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>小写字母：</td>
+                        <td><label for="lc">a~z</label></td>
+                        <td>
+                            <input type="checkbox" id="lc" />
+                            <label for="lc">✓</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>数字：</td>
+                        <td><label for="num">0~9</label></td>
+                        <td>
+                            <input type="checkbox" id="num" checked />
+                            <label for="num">✓</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>符号：</td>
+                        <td><label for="mark">!?~=</label></td>
+                        <td>
+                            <input type="checkbox" id="mark" />
+                            <label for="mark">✓</label>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <p class="button">
+                <a id="convert" onclick="generate()">生成</a>
+            </p>
+            <p class="copyright">
+                <i class="fa fa-copyright"></i> 2021 StarSky919
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../assets/js/main.js"></script>
+    <script type="text/javascript">
+        function check() {
+            setTimeout('let num = getElm1("length");if (Number(num.value) > 16) {num.value = 16;} if (Number(num.value < 0)) {num.value = 0}', 1);
+        }
+
+        let str = {
+            uc: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            lc: "abcdefghijklmnopqrstuvwxyz",
+            num: '0123456789',
+            mark: '!?,.;:&#@%$+-*_='
+        }
+
+        function generate() {
+            let length = Number(getElm1('length').value);
+            let num = getElm1('num').checked;
+            let uc = getElm1('uc').checked;
+            let lc = getElm1('lc').checked;
+            let mark = getElm1('mark').checked;
+            var password = '';
+            while (password.length < length) {
+                let rdm1 = Math.ceil(Math.random() * 4);
+                let rdm2 = function(obj) {
+                    return Math.ceil(obj.length * Math.random() * Math.random()) - 1;
+                }
+                if (num || uc || lc || mark) {
+                    switch (rdm1) {
+                        case 1:
+                            if (uc) {
+                                password += str.uc.charAt(rdm2(str.uc));
+                            }
+                            break;
+                        case 2:
+                            if (lc) {
+                                password += str.lc.charAt(rdm2(str.lc));
+                            }
+                            break;
+                        case 3:
+                            if (num) {
+                                password += str.num.charAt(rdm2(str.num));
+                            }
+                            break;
+                        case 4:
+                            if (mark) {
+                                password += str.mark.charAt(rdm2(str.mark));
+                            }
+                            break;
+                    }
+                } else {
+                    break;
+                }
+            }
+            if (password.trim()) {
+                getElm1('result').innerHTML = `密码：${password}`;
+            } else {
+                getElm1('result').innerHTML = '请设置选项';
+            }
+        }
+    </script>
+</body>
+
+</html>

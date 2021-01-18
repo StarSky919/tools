@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="icon" href="../assets/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
+    <style type="text/css">
+        :root {
+            --toggle-background: var(--white2);
+        }
+
+        .dark-mode {
+            --toggle-background: var(--black3);
+        }
+
+        .toggle {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+        }
+
+        .toggle>span {
+            /*something...*/
+        }
+
+        .toggle input[type=checkbox] {
+            display: none;
+        }
+
+        .toggle label span {
+            display: inline-block;
+            position: relative;
+            width: 50px;
+            height: 90%;
+            border-radius: 4px;
+            background: var(--toggle-background);
+            transition: background 0.25s ease;
+        }
+
+        .toggle label span::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 45%;
+            height: 75%;
+            top: 12.5%;
+            transform: translateX(12.5%);
+            border-radius: 4px;
+            background: var(--white1);
+            transition: transform 0.25s ease;
+        }
+
+        .toggle input[type=checkbox]:checked+span {
+            background: var(--blue);
+        }
+
+        .toggle input[type=checkbox]:checked+span::before {
+            transform: translateX(calc(50% + 45% + 12.5%));
+        }
+    </style>
+    <title>测试页面</title>
+</head>
+
+<body>
+    <div class="nav">
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" class="menu">
+            <i class="fa fa-bars"></i>
+        </label>
+        <div class="items"></div>
+        <span class="home">
+            <a href="../" class="fa fa-home"></a>
+        </span>
+        <span class="title">Test</span>
+    </div>
+    <div class="row">
+        <div class="main">
+            <h2>测试页面</h2>
+            <div class="toggle">
+                <span>深色模式</span>
+                <label for="darkMode">
+                    <input type="checkbox" id="darkMode" />
+                    <span></span>
+                </label>
+            </div>
+            <div class="toggle">
+                <span>开关2</span>
+                <label for="t2">
+                    <input type="checkbox" id="t2" />
+                    <span></span>
+                </label>
+            </div>
+            <div class="toggle circle">
+                <span>开关3</span>
+                <label for="t3">
+                    <input type="checkbox" id="t3">
+                    <span></span>
+                </label>
+            </div>
+            <p class="copyright">
+                <i class="fa fa-copyright"></i> 2021 StarSky919
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="../assets/js/main.js"></script>
+    <script type="text/javascript">
+        var dark = getElm1('darkMode');
+
+        if (getCookie('darkMode') == 'open') {
+            dark.checked = true;
+        }
+
+        dark.onclick = function() {
+            if (dark.checked) {
+                setCookie('darkMode', 'open', 365);
+            } else {
+                setCookie('darkMode', 'off', 365);
+            }
+            toggleDarkMode();
+        }
+    </script>
+</body>
+
+</html>
