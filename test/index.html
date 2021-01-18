@@ -8,20 +8,21 @@
     <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
     <style type="text/css">
-        .tc {
+        .toggle {
             display: flex;
             justify-content: space-between;
+            margin: 8px 0;
         }
 
-        .tc span::first-child {
-            /*something..*/
+        .toggle>span {
+            /*something...*/
         }
 
-        .tc input[type=checkbox] {
+        .toggle input[type=checkbox] {
             display: none;
         }
 
-        .tc label span {
+        .toggle label span {
             display: inline-block;
             position: relative;
             width: 50px;
@@ -31,7 +32,7 @@
             transition: background 0.25s ease;
         }
 
-        .tc label span::before {
+        .toggle label span::before {
             content: "";
             display: inline-block;
             position: absolute;
@@ -44,11 +45,11 @@
             transition: transform 0.25s ease;
         }
 
-        .tc input[type=checkbox]:checked+span {
+        .toggle input[type=checkbox]:checked+span {
             background: var(--color5);
         }
 
-        .tc input[type=checkbox]:checked+span::before {
+        .toggle input[type=checkbox]:checked+span::before {
             transform: translateX(calc(50% + 45% + 12.5%));
         }
     </style>
@@ -70,10 +71,24 @@
     <div class="row" onclick="closeMenu()">
         <div class="main">
             <h2>测试页面</h2>
-            <div class="tc">
-                <span>开关</span>
-                <label for="toggle">
-                    <input type="checkbox" id="toggle" />
+            <div class="toggle">
+                <span>开关1</span>
+                <label for="t1">
+                    <input type="checkbox" id="t1" />
+                    <span></span>
+                </label>
+            </div>
+            <div class="toggle">
+                <span>开关2</span>
+                <label for="t2">
+                    <input type="checkbox" id="t2" />
+                    <span></span>
+                </label>
+            </div>
+            <div class="toggle circle">
+                <span>开关3</span>
+                <label for="t3">
+                    <input type="checkbox" id="t3">
                     <span></span>
                 </label>
             </div>
