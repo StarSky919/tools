@@ -10,11 +10,15 @@
     <style type="text/css">
         #result:disabled {
             width: 100%;
-            line-height: 16px;
+            line-height: 150%;
             color: var(--text-color);
             background: none;
             outline: none;
             border: none;
+        }
+
+        #tips {
+            margin-top: 0;
         }
 
         #length {
@@ -58,7 +62,7 @@
     <div class="nav">
         <input type="checkbox" id="checkbox">
         <label for="checkbox" class="menu">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-navicon"></i>
         </label>
         <div class="items"></div>
         <span class="home">
@@ -70,7 +74,6 @@
         <div class="main">
             <h2>密码生成器</h2>
             <p>
-                <!-- <input type="text" id="result" value="设置长度和选项来生成随机密码" disabled/> -->
                 <textarea id="result" rows="1" wrap="physical" disabled>设置长度和选项来生成随机密码</textarea>
             </p>
             <form class="conditions">
@@ -139,6 +142,11 @@
             var text = getElm1('result');
             text.style.height = "inherit";
             text.style.height = text.scrollHeight + "px";
+        }
+
+        if (getCookie('unlimited') == 'on') {
+            getElm1('result').value += '\n长度过长将导致浏览器卡顿';
+            autoHeight();
         }
 
         let str = {

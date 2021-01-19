@@ -95,28 +95,16 @@ function closeMenu() {
 
 let darkMode = {
     toggle: function() {
-        if (getCookie('darkMode') == 'open') {
+        if (getCookie('darkMode') == 'on') {
             getElm2('body').classList.add('dark-mode');
         } else {
             getElm2('body').classList.remove('dark-mode');
         }
     },
-    auto: function() {
-        if (getCookie('autoDM') == 'open') {
-            dark.disabled = true;
-            if (time()) {
-                setCookie('darkMode', 'open', 365);
-                dark.checked = true;
-                darkMode.toggle();
-            }
-        } else {
-            dark.disabled = false;
-        }
-    },
     check: function() {
-        if (getCookie('autoDM') == 'open') {
+        if (getCookie('autoDM') == 'on') {
             if (time()) {
-                setCookie('darkMode', 'open', 365);
+                setCookie('darkMode', 'on', 365);
             } else {
                 setCookie('darkMode', 'off', 365);
             }
