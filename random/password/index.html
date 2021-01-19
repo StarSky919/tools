@@ -118,6 +118,7 @@
             </form>
             <p class="button">
                 <a id="generate">生成</a>
+                <a id="reset">重置</a>
             </p>
             <p class="copyright">
                 <i class="fa fa-copyright"></i> 2021 StarSky919
@@ -233,6 +234,14 @@
                 getElm1('result').value = '请设置选项';
             }
             autoHeight();
+        }
+
+        getElm1('reset').onclick = function() {
+            getElm1('result').value = '设置长度和选项来生成随机密码';
+            if (getCookie('unlimited') == 'on') {
+                getElm1('result').value += '\n长度过长将导致浏览器卡顿';
+                autoHeight();
+            }
         }
     </script>
 </body>

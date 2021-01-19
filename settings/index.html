@@ -113,6 +113,10 @@
                     <span></span>
                 </label>
             </div>
+            <p class="button">
+                <a id="resetSettings">恢复默认</a>
+                <a id="deleteData">删除数据</a>
+            </p>
             <p class="copyright">
                 <i class="fa fa-copyright"></i> 2021 StarSky919
             </p>
@@ -185,7 +189,7 @@
                 if (limit.checked) {
                     setCookie('unlimited', 'on', 365);
                 } else {
-                    setCookie('unlimited', 'off', 365)
+                    setCookie('unlimited', 'off', 365);
                 }
             }
         } /*END: PG Unlimited*/
@@ -202,10 +206,46 @@
                 if (eggs.checked) {
                     setCookie('eggs', 'on', 365);
                 } else {
-                    setCookie('eggs', 'off', 365)
+                    setCookie('eggs', 'off', 365);
                 }
             }
         } /*END: Eggs*/
+
+        /*START: Resets*/
+        {
+            function resetSettings() {
+                setCookie('darkMode', 'off', 365);
+                setCookie('autoDM', 'off', 365);
+                setCookie('unlimited', 'off', 365);
+                setCookie('eggs', 'off', 365);
+                for (let [index, toggle] of getElm3('input[type=checkbox]').entries()) {
+                    toggle.checked = false;
+                    toggle.disabled = false;
+                }
+                darkMode.toggle();
+            }
+
+            getElm1('resetSettings').onclick = function() {
+                let warning = confirm('确定恢复全部设置吗？');
+                if (warning) {
+                    resetSettings();
+                } else {
+                    return;
+                }
+            }
+
+            getElm1('deleteData').onclick = function() {
+                let warning = confirm('以下项目将被清除：\n\n您在所有工具内设置的选项;\n网站设置;\n\n确定删除数据？');
+                if (warning) {
+                    resetSettings();
+                    for (let [index, cookies] of document.cookie.split(';').entries()) {
+                        setCookie(cookies.split('=')[0], '', -1);
+                    }
+                } else {
+                    return;
+                }
+            }
+        } /*END: Resets*/
     </script>
 </body>
 
