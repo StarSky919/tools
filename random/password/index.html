@@ -80,13 +80,13 @@
                 <table>
                     <tr>
                         <td>密码长度：</td>
-                        <td><input type="number" id="length" onkeydown="check()" value="8" /></td>
+                        <td><input type="number" id="length" onkeydown="check()" /></td>
                     </tr>
                     <tr>
                         <td>大写字母：</td>
                         <td><label for="uc">A~Z</label></td>
                         <td>
-                            <input type="checkbox" id="uc" checked />
+                            <input type="checkbox" id="uc" />
                             <label for="uc">✓</label>
                         </td>
                     </tr>
@@ -102,7 +102,7 @@
                         <td>数字：</td>
                         <td><label for="num">0~9</label></td>
                         <td>
-                            <input type="checkbox" id="num" checked />
+                            <input type="checkbox" id="num" />
                             <label for="num">✓</label>
                         </td>
                     </tr>
@@ -117,7 +117,7 @@
                 </table>
             </form>
             <p class="button">
-                <a id="convert" onclick="generate()">生成</a>
+                <a id="generate">生成</a>
             </p>
             <p class="copyright">
                 <i class="fa fa-copyright"></i> 2021 StarSky919
@@ -126,9 +126,38 @@
     </div>
     <script type="text/javascript" src="../../assets/js/main.js"></script>
     <script type="text/javascript">
+        function setValue(a, b, c, d, e) {
+            if (getCookie('unlimited') == 'off' && a > 16) {
+                a = 16;
+            }
+            getElm1('length').value = a;
+            if (b == 'true') {
+                getElm1('uc').checked = true;
+            }
+            if (c == 'true') {
+                getElm1('lc').checked = true;
+            }
+            if (d == 'true') {
+                getElm1('num').checked = true;
+            }
+            if (e == 'true') {
+                getElm1('mark').checked = true;
+            }
+        }
+
+        var preset = '8|true|false|true|false';
+        var values = getCookie('defaultValue');
+
+        if (values == '') {
+            setCookie('defaultValue', preset, 365);
+            setValue(...preset.split('|'));
+        } else {
+            setValue(...values.split('|'));
+        }
+
         function check() {
             setTimeout(function() {
-                var num = getElm1("length");
+                var num = getElm1('length');
                 if (Number(num.value) > 16 && getCookie('unlimited') == 'off') {
                     num.value = 16;
                 }
@@ -140,8 +169,8 @@
 
         function autoHeight() {
             var text = getElm1('result');
-            text.style.height = "inherit";
-            text.style.height = text.scrollHeight + "px";
+            text.style.height = 'inherit';
+            text.style.height = text.scrollHeight + 'px';
         }
 
         if (getCookie('unlimited') == 'on') {
@@ -150,18 +179,21 @@
         }
 
         let str = {
-            uc: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            lc: "abcdefghijklmnopqrstuvwxyz",
+            uc: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            lc: 'abcdefghijklmnopqrstuvwxyz',
             num: '0123456789',
             mark: '!?,.;:&#@%$+-*_='
         }
 
-        function generate() {
+        getElm1('generate').onclick = function() {
             let length = Number(getElm1('length').value);
-            let num = getElm1('num').checked;
             let uc = getElm1('uc').checked;
             let lc = getElm1('lc').checked;
+            let num = getElm1('num').checked;
             let mark = getElm1('mark').checked;
+
+            setCookie('defaultValue', `${length}|${uc}|${lc}|${num}|${mark}`, 365);
+
             var password = '';
             while (password.length < length) {
                 let rdm1 = Math.ceil(Math.random() * 4);
