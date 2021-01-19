@@ -53,13 +53,11 @@ let tools = [
 var html = '';
 var url = location.href.split('/');
 
-/*Compatible*/
-var int;
+//Compatible
+var int = 5;
 
 if (url[2] == 'localhost:7700') {
     int = 4;
-} else {
-    int = 5;
 }
 
 for (x in tools) {
@@ -92,6 +90,8 @@ function closeMenu() {
 /*END: Navigation Bar*/
 
 /*START: Dark Mode*/
+
+//const isDM = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 let darkMode = {
     toggle: function() {
