@@ -162,19 +162,21 @@ var Confetti = function() {
         DURATION = 8000,
         LENGTH = 128;
 
-    new Confetti({
-        width: WIDTH,
-        height: HEIGHT,
-        length: LENGTH,
-        duration: DURATION
-    });
-
-    setTimeout(function() {
+    if (getCookie('eggs') == 'on') {
         new Confetti({
             width: WIDTH,
             height: HEIGHT,
             length: LENGTH,
             duration: DURATION
         });
-    }, DURATION / 2);
+
+        setTimeout(function() {
+            new Confetti({
+                width: WIDTH,
+                height: HEIGHT,
+                length: LENGTH,
+                duration: DURATION
+            });
+        }, DURATION / 2);
+    }
 })();
