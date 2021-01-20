@@ -274,10 +274,6 @@ p.copyright {
     font-size: 12px;
 }
 
-@media screen and (max-width: 768px) {
-    /*something...*/
-}
-
 @media screen and (min-width: 768px) {
     .row {
         max-width: 768px;

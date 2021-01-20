@@ -53,12 +53,13 @@
         </div>
     </div>
     <script type="text/javascript" src="assets/js/main.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/current-device/umd/current-device.min.js"></script> -->
     <script type="text/javascript">
         var b = '';
         for (i in tools) {
             b += `<a href=\"${tools[i][0]}\">${tools[i][1]}</a>`
-        }
-        getElm2('.tools').innerHTML = b;
+            getElm2('.tools').innerHTML = b;
+        };
     </script>
 </body>
 
