@@ -5,7 +5,12 @@
     height: 50px;
     line-height: 50px;
     background: var(--nav-background);
-    z-index: 9996;
+    z-index: 997;
+}
+
+.footer.transparent {
+    background: var(--black-alpha3);
+    box-shadow: 0px -2px 12px var(--black-alpha3);
 }
 
 .footer a {
@@ -30,5 +35,5 @@
 }
 
 .footer .active {
-    border-bottom-color: var(--blue);
+    border-bottom-color: var(--main-color);
 }

@@ -76,18 +76,14 @@
                 if (Number(obj.value) > 255) {
                     obj.value = 255;
                 }
-                if (regex.rgb.test(obj.value)) {
-                    obj.value = obj.value.replace(regex.rgb, '');
-                }
+                textRegex.replace(regex.rgb, obj);
             },
             hex: function(obj) {
                 if (obj.value.length > 6) {
                     obj.value = obj.value.slice(0, 6);
                 }
-                if (regex.hex.test(obj.value)) {
-                    obj.value = obj.value.replace(regex.hex, '');
-                }
-
+                textRegex.replace(regex.hex, obj);
+                obj.value = obj.value.toUpperCase();
             }
         }
 

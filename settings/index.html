@@ -9,16 +9,17 @@
     <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
     <style type="text/css">
         :root {
-            --toggle-background: var(--white2);
+            --toggle-background: var(--gray);
         }
 
         .dark-mode {
-            --toggle-background: var(--black3);
+            --toggle-background: var(--gray);
         }
 
         .toggle {
             display: flex;
             justify-content: space-between;
+            line-height: 24px;
             margin: 8px 0;
         }
 
@@ -54,7 +55,7 @@
         }
 
         .toggle input:checked+span {
-            background: var(--blue);
+            background: var(--main-color);
         }
 
         .toggle input:checked+span::before {
@@ -62,7 +63,7 @@
         }
 
         .toggle input:disabled+span {
-            filter: brightness(75%);
+            filter: brightness(50%);
         }
     </style>
     <title>网站设置</title>
@@ -83,18 +84,25 @@
     <div class="row">
         <div class="main">
             <h2>网站设置</h2>
-            <div class="title">深色模式</div>
+            <div class="title">主题设置</div>
             <div class="toggle">
-                <span>启用深色模式</span>
-                <label for="darkMode">
-                    <input type="checkbox" id="darkMode" />
+                <span>主题色切换</span>
+                <label for="mainColor">
+                    <input type="checkbox" id="mainColor">
                     <span></span>
                 </label>
             </div>
             <div class="toggle">
-                <span>自动开启（22:00 ~ 6:00）</span>
-                <label for="autoDM">
-                    <input type="checkbox" id="autoDM" />
+                <span>导航栏透明</span>
+                <label for="transparentNav">
+                    <input type="checkbox" id="transparentNav" />
+                    <span></span>
+                </label>
+            </div>
+            <div class="toggle">
+                <span>启用深色模式</span>
+                <label for="darkMode">
+                    <input type="checkbox" id="darkMode" />
                     <span></span>
                 </label>
             </div>

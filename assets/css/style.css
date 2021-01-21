@@ -7,8 +7,10 @@
     --black3: #212121;
 
     --white1: #ffffff;
-    --white2: #d0d0d0;
-    --white3: #f0f0f0;
+    --white2: #D0D0D0;
+    --white3: #F0F0F0;
+
+    --gray: #808080;
     --navy: #353941;
     --blue: #9898FF;
     --red: #FEA29F;
@@ -20,6 +22,7 @@
     --white-alpha2: rgba(255, 255, 255, 0.24);
     --white-alpha3: rgba(255, 255, 255, 0.60);
 
+    --main-color: var(--blue);
     --main-background: var(--white1);
     --nav-background: var(--navy);
     --menu-background: var(--black-alpha3);
@@ -46,7 +49,6 @@
     font-family: "ProductSans";
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: none;
 }
 
 *::selection {
@@ -56,10 +58,7 @@
 body {
     margin: 0;
     padding: 0;
-}
-
-a {
-    -webkit-touch-callout: none;
+    background: var(--main-background);
 }
 
 .nav {
@@ -70,6 +69,18 @@ a {
     top: 0;
     background: var(--nav-background);
     z-index: 999;
+}
+
+.nav.transparent {
+    background: var(--black-alpha3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0px 4px 12px var(--black-alpha3);
+}
+
+.nav.transparent .items {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 #checkbox {
@@ -116,7 +127,6 @@ a {
     filter: brightness(80%);
 }
 
-
 .nav .items {
     position: absolute;
     overflow: scroll;
@@ -127,11 +137,14 @@ a {
     left: -100%;
     color: var(--nav-text-color);
     background: var(--menu-background);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     transition: left 0.5s ease;
+    z-index: 998;
 }
 
 .dark-mode .nav .items {
-    box-shadow: 2px 4px 8px var(--black-alpha3);
+    box-shadow: 2px 0 8px var(--black-alpha3);
 }
 
 .nav #checkbox:checked~.items {
@@ -150,9 +163,9 @@ a {
 }
 
 .nav .items a:hover {
-    color: var(--blue);
+    color: var(--main-color);
     background: var(--black-alpha2);
-    border-left-color: var(--blue);
+    border-left-color: var(--main-color);
 }
 
 .dark-mode .nav .items a:hover {
@@ -195,7 +208,7 @@ a {
 }
 
 .a:hover {
-    color: var(--blue);
+    color: var(--main-color);
 }
 
 input[type=text],
@@ -204,18 +217,6 @@ input[type=number] {
 }
 
 ::-webkit-input-placeholder {
-    color: var(--placeholder);
-}
-
-:-moz-placeholder {
-    color: var(--placeholder);
-}
-
-::-moz-placeholder {
-    color: var(--placeholder);
-}
-
-:-ms-input-placeholder {
     color: var(--placeholder);
 }
 

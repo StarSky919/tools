@@ -1,4 +1,6 @@
-/*START: Cutom Functions*/
+'use strict'
+
+/*START: Global Settings*/
 
 function getElm1(id) {
     return document.getElementById(id);
@@ -39,7 +41,15 @@ function time() {
     return new Date().getHours() >= 22 || new Date().getHours() < 6;
 }
 
-/*END: Custom Functions*/
+var textRegex = {
+    replace: function(regex, obj) {
+        if (regex.test(obj.value)) {
+            obj.value = obj.value.replace(regex, '');
+        }
+    }
+}
+
+/*END: Global Settings*/
 
 /*START: Navigation Bar*/
 
@@ -50,20 +60,19 @@ let tools = [
     ['color/', '颜色工具'],
     ['settings/', '网站设置']
 ]
+let url = location.href.split('/');
 var html = '';
-var url = location.href.split('/');
 
 //Compatible
 var int = 5;
-
 if (url[2] == 'localhost:7700') {
     int = 4;
 }
 
-for (x in tools) {
+for (let x in tools) {
     var a = tools;
     if (url.length > int) {
-        for (y in url) {
+        for (let y in url) {
             if (y >= int - 1) {
                 a[x][0] = `../${a[x][0]}`;
             }
@@ -72,8 +81,11 @@ for (x in tools) {
     }
     html += `<a href=\"${a[x][0]}\">${a[x][1]}</a>`;
 }
-
 getElm2('.nav .items').innerHTML = html;
+
+function closeMenu() {
+    getElm1('checkbox').checked = false;
+}
 
 window.onbeforeunload = function() {
     closeMenu();
@@ -83,11 +95,43 @@ getElm2('.row').onclick = function() {
     closeMenu();
 }
 
-function closeMenu() {
-    getElm1('checkbox').checked = false;
-}
-
 /*END: Navigation Bar*/
+
+/*START: Theme Settings*/
+
+let theme = {
+    mainColor: {
+        set: function(color) {
+            document.documentElement.style.setProperty('--main-color', color);
+        },
+        toggle: function() {
+            switch (getCookie('mainColor')) {
+                case '#9898FF':
+                    document.documentElement.style.setProperty('--main-color', '#9898FF');
+                    break;
+                case '#FEA29F':
+                    document.documentElement.style.setProperty('--main-color', '#FEA29F');
+                    break;
+            }
+        }
+    },
+    navBar: {
+        toggle: function() {
+            var regex = /cy2calc/g;
+            if (getCookie('transparentNav') == 'on') {
+                getElm2('.nav').classList.add('transparent');
+                if (regex.test(location.href)) {
+                    getElm2('.footer').classList.add('transparent');
+                }
+            } else {
+                getElm2('.nav').classList.remove('transparent');
+                if (regex.test(location.href)) {
+                    getElm2('.footer').classList.remove('transparent');
+                }
+            }
+        }
+    }
+}
 
 /*START: Dark Mode*/
 
@@ -100,19 +144,15 @@ let darkMode = {
         } else {
             getElm2('body').classList.remove('dark-mode');
         }
-    },
-    check: function() {
-        if (getCookie('autoDM') == 'on') {
-            if (time()) {
-                setCookie('darkMode', 'on', 365);
-            } else {
-                setCookie('darkMode', 'off', 365);
-            }
-        }
     }
 }
 
-darkMode.check();
-darkMode.toggle();
-
 /*END: Dark Mode*/
+
+/*END: Theme Settings*/
+
+/*START: Window Events*/
+theme.mainColor.toggle();
+theme.navBar.toggle();
+darkMode.toggle();
+/*END: Window Events*/
