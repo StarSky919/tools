@@ -60,15 +60,6 @@
             b += `<a href=\"${tools[i][0]}\">${tools[i][1]}</a>`
             getElm2('.tools').innerHTML = b;
         };
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.open('GET', 'test.txt', true);
-        xhttp.send();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                //alert(this.responseText);
-            }
-        };
     </script>
 </body>
 
