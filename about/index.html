@@ -83,16 +83,16 @@
         xhttp.send();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                getElm2('.update').innerHTML = this.responseText;
+                getElm1('.update').innerHTML = this.responseText;
             }
         };
 
         var html = document.documentElement;
         document.addEventListener('scroll', (e) => {
-            if (html.scrollTop > getElm2('.about').offsetHeight) {
-                getElm2('.update').classList.add('fade-in');
+            if (html.scrollTop > getElm1('.about').offsetHeight) {
+                getElm1('.update').classList.add('fade-in');
             } else {
-                getElm2('.update').classList.remove('fade-in');
+                getElm1('.update').classList.remove('fade-in');
             }
         });
     </script>

@@ -1,8 +1,8 @@
-var color = getElm1('mainColor');
-var transparent = getElm1('transparentNav');
-var dark = getElm1('darkMode');
-var limit = getElm1('unlimited');
-var eggs = getElm1('eggs');
+var color = getElm1('#mainColor');
+var transparent = getElm1('#transparentNav');
+var dark = getElm1('#darkMode');
+var limit = getElm1('#unlimited');
+var eggs = getElm1('#eggs');
 
 /*START: Theme Settings*/
 {
@@ -91,14 +91,14 @@ var eggs = getElm1('eggs');
         setCookie('autoDM', 'off', 365);
         setCookie('unlimited', 'off', 365);
         setCookie('eggs', 'off', 365);
-        for (let [index, toggle] of getElm3('input[type=checkbox]').entries()) {
+        for (let [index, toggle] of getElm2('input[type=checkbox]').entries()) {
             toggle.checked = false;
             toggle.disabled = false;
         }
         darkMode.toggle();
     }
 
-    getElm1('resetSettings').onclick = function() {
+    getElm1('#resetSettings').onclick = function() {
         let warning = confirm('确定恢复全部设置吗？');
         if (warning) {
             resetSettings();
@@ -107,7 +107,7 @@ var eggs = getElm1('eggs');
         }
     }
 
-    getElm1('deleteData').onclick = function() {
+    getElm1('#deleteData').onclick = function() {
         let warning = confirm('以下项目将被清除：\n\n您在所有工具内设置的选项;\n网站设置;\n\n确定删除数据？');
         if (warning) {
             resetSettings();

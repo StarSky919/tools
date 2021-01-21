@@ -1,5 +1,5 @@
 var str = '开始计算以查看结果';
-var result = getElm1('result');
+var result = getElm1('#result');
 
 function al1() {
     result.innerHTML = '请输入正确的数值！';

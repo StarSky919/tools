@@ -2,15 +2,12 @@
 
 /*START: Global Settings*/
 
-function getElm1(id) {
-    return document.getElementById(id);
-}
 
-function getElm2(query) {
+function getElm1(query) {
     return document.querySelector(query);
 }
 
-function getElm3(query) {
+function getElm2(query) {
     return document.querySelectorAll(query);
 }
 
@@ -81,17 +78,18 @@ for (let x in tools) {
     }
     html += `<a href="${a[x][0]}" style="--i: ${x};">${a[x][1]}</a>`;
 }
-getElm2('.nav .items').innerHTML = html;
+getElm1('.nav .items').innerHTML = html;
 
 function closeMenu() {
-    getElm1('checkbox').checked = false;
+    getElm1('#checkbox').checked = false;
 }
 
-window.onbeforeunload = function() {
+getElm1('.row').onclick = function(event) {
+    alert(event.target)
     closeMenu();
 }
 
-getElm2('.row').onclick = function() {
+window.onbeforeunload = function() {
     closeMenu();
 }
 
@@ -119,14 +117,14 @@ let theme = {
         toggle: function() {
             var regex = /cy2calc/g;
             if (getCookie('transparentNav') == 'on') {
-                getElm2('.nav').classList.add('transparent');
+                getElm1('.nav').classList.add('transparent');
                 if (regex.test(location.href)) {
-                    getElm2('.footer').classList.add('transparent');
+                    getElm1('.footer').classList.add('transparent');
                 }
             } else {
-                getElm2('.nav').classList.remove('transparent');
+                getElm1('.nav').classList.remove('transparent');
                 if (regex.test(location.href)) {
-                    getElm2('.footer').classList.remove('transparent');
+                    getElm1('.footer').classList.remove('transparent');
                 }
             }
         }
@@ -140,9 +138,9 @@ let theme = {
 let darkMode = {
     toggle: function() {
         if (getCookie('darkMode') == 'on') {
-            getElm2('body').classList.add('dark-mode');
+            getElm1('body').classList.add('dark-mode');
         } else {
-            getElm2('body').classList.remove('dark-mode');
+            getElm1('body').classList.remove('dark-mode');
         }
     }
 }

@@ -131,18 +131,18 @@
             if (getCookie('unlimited') == 'off' && a > 16) {
                 a = 16;
             }
-            getElm1('length').value = a;
+            getElm1('#length').value = a;
             if (b == 'true') {
-                getElm1('uc').checked = true;
+                getElm1('#uc').checked = true;
             }
             if (c == 'true') {
-                getElm1('lc').checked = true;
+                getElm1('#lc').checked = true;
             }
             if (d == 'true') {
-                getElm1('num').checked = true;
+                getElm1('#num').checked = true;
             }
             if (e == 'true') {
-                getElm1('mark').checked = true;
+                getElm1('#mark').checked = true;
             }
         }
 
@@ -158,7 +158,7 @@
 
         function check() {
             setTimeout(function() {
-                var num = getElm1('length');
+                var num = getElm1('#length');
                 if (Number(num.value) > 16 && getCookie('unlimited') == 'off') {
                     num.value = 16;
                 }
@@ -169,13 +169,13 @@
         }
 
         function autoHeight() {
-            var text = getElm1('result');
+            var text = getElm1('#result');
             text.style.height = 'inherit';
             text.style.height = text.scrollHeight + 'px';
         }
 
         if (getCookie('unlimited') == 'on') {
-            getElm1('result').value += '\n长度过长将导致浏览器卡顿';
+            getElm1('#result').value += '\n长度过长将导致浏览器卡顿';
             autoHeight();
         }
 
@@ -186,12 +186,12 @@
             mark: '!?,.;:&#@%$+-*_='
         }
 
-        getElm1('generate').onclick = function() {
-            let length = Number(getElm1('length').value);
-            let uc = getElm1('uc').checked;
-            let lc = getElm1('lc').checked;
-            let num = getElm1('num').checked;
-            let mark = getElm1('mark').checked;
+        getElm1('#generate').onclick = function() {
+            let length = Number(getElm1('#length').value);
+            let uc = getElm1('#uc').checked;
+            let lc = getElm1('#lc').checked;
+            let num = getElm1('#num').checked;
+            let mark = getElm1('#mark').checked;
 
             setCookie('defaultValue', `${length}|${uc}|${lc}|${num}|${mark}`, 365);
 
@@ -229,17 +229,17 @@
                 }
             }
             if (password.trim()) {
-                getElm1('result').value = `密码：${password}`;
+                getElm1('#result').value = `密码：${password}`;
             } else {
-                getElm1('result').value = '请设置选项';
+                getElm1('#result').value = '请设置选项';
             }
             autoHeight();
         }
 
-        getElm1('reset').onclick = function() {
-            getElm1('result').value = '设置长度和选项来生成随机密码';
+        getElm1('#reset').onclick = function() {
+            getElm1('#result').value = '设置长度和选项来生成随机密码';
             if (getCookie('unlimited') == 'on') {
-                getElm1('result').value += '\n长度过长将导致浏览器卡顿';
+                getElm1('#result').value += '\n长度过长将导致浏览器卡顿';
                 autoHeight();
             }
         }
