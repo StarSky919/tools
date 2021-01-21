@@ -201,12 +201,12 @@ body {
     text-indent: 2em;
 }
 
-.a {
+a {
     color: var(--text-color);
     transition: color 0.2s;
 }
 
-.a:hover {
+a:hover {
     color: var(--main-color);
 }
 
