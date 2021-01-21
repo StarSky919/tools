@@ -17,12 +17,12 @@ function getElm3(query) {
 function setCookie(name, value, days) {
     var date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + date.toGMTString();
+    var expires = 'expires=' + date.toGMTString();
     document.cookie = `${name}=${value};${expires};path=/`;
 }
 
 function getCookie(cname) {
-    var name = cname + "=";
+    var name = cname + '=';
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for (var i = 0; i < ca.length; i++) {
@@ -34,7 +34,7 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-    return "";
+    return '';
 }
 
 function fileRequest(path, func) {
