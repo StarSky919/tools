@@ -128,7 +128,7 @@
     <script type="text/javascript" src="../../resources/js/main.js"></script>
     <script type="text/javascript">
         function setValue(a, b, c, d, e) {
-            if (getCookie('unlimited') == 'off' && a > 16) {
+            if (getCookie('unlimited') != 'on' && a > 16) {
                 a = 16;
             }
             getElm1('#length').value = a;
@@ -159,7 +159,7 @@
         function check() {
             setTimeout(function() {
                 var num = getElm1('#length');
-                if (Number(num.value) > 16 && getCookie('unlimited') == 'off') {
+                if (Number(num.value) > 16 && getCookie('unlimited') != 'on') {
                     num.value = 16;
                 }
                 if (Number(num.value < 0)) {
@@ -240,8 +240,8 @@
             getElm1('#result').value = '设置长度和选项来生成随机密码';
             if (getCookie('unlimited') == 'on') {
                 getElm1('#result').value += '\n长度过长将导致浏览器卡顿';
-                autoHeight();
             }
+            autoHeight();
         }
     </script>
 </body>

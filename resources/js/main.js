@@ -2,7 +2,6 @@
 
 /*START: Global Settings*/
 
-
 function getElm1(query) {
     return document.querySelector(query);
 }
@@ -85,7 +84,6 @@ function closeMenu() {
 }
 
 getElm1('.row').onclick = function(event) {
-    alert(event.target)
     closeMenu();
 }
 
