@@ -10,7 +10,7 @@
     --white3: #F0F0F0;
 
     --gray: #808080;
-    --navy: #353941;
+    --navy: #35333e;
     --blue: #9898FF;
     --red: #FEA29F;
 
@@ -155,10 +155,21 @@ body {
     line-height: 50px;
     padding: 8px 16px;
     color: var(--nav-text-color);
+    opacity: 0;
     border-left: 4px solid transparent;
+    transform: translateX(-50px);
     transition: all 0.25s ease;
     text-decoration: none;
     font-size: 20px;
+}
+
+.nav #checkbox:checked~.items a {
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+        all 0.25s ease,
+        opacity 0.25s ease-out calc((var(--i) + 1) * 0.05s + 0.15s),
+        transform 0.25s ease-out calc((var(--i) + 1) * 0.05s + 0.15s);
 }
 
 .nav .items a:hover {

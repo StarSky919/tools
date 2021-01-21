@@ -37,6 +37,17 @@ function getCookie(cname) {
     return "";
 }
 
+function fileRequest(path, func) {
+    var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', path, true);
+        xhttp.send();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                func(this);
+            }
+        };
+}
+
 function time() {
     return new Date().getHours() >= 22 || new Date().getHours() < 6;
 }
@@ -79,7 +90,7 @@ for (let x in tools) {
         }
         a[x][0] = `tools/${a[x][0]}`;
     }
-    html += `<a href=\"${a[x][0]}\">${a[x][1]}</a>`;
+    html += `<a href="${a[x][0]}" style="--i: ${x};">${a[x][1]}</a>`;
 }
 getElm2('.nav .items').innerHTML = html;
 
