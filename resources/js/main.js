@@ -39,13 +39,13 @@ function getCookie(cname) {
 
 function fileRequest(path, func) {
     var xhttp = new XMLHttpRequest();
-        xhttp.open('GET', path, true);
-        xhttp.send();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                func(this);
-            }
-        };
+    xhttp.open('GET', path, true);
+    xhttp.send();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            func(this);
+        }
+    };
 }
 
 function time() {
