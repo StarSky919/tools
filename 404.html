@@ -13,11 +13,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            background: var(--main-background);
         }
 
         body>* {
             margin: 16px 0;
+            color: var(--text-color);
         }
 
         h1 {
@@ -34,6 +36,29 @@
     <p class="copyright">
         <i class="fa fa-copyright"></i> 2021 StarSky919
     </p>
+    <script type="text/javascript">
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        if (getCookie('darkMode') == 'on') {
+            document.querySelector('body').classList.add('dark-mode');
+        } else {
+            document.querySelector('body').classList.remove('dark-mode');
+        }
+    </script>
 </body>
 
 </html>
