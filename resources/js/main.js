@@ -37,17 +37,6 @@ function getCookie(cname) {
     return '';
 }
 
-function fileRequest(path, func) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', path, true);
-    xhttp.send();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            func(this);
-        }
-    };
-}
-
 function time() {
     return new Date().getHours() >= 22 || new Date().getHours() < 6;
 }
