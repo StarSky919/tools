@@ -13,7 +13,11 @@ var _createClass = function() {
     return function(Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; };
 }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError('Cannot call a class as a function');
+    }
+}
 
 var Progress = function() {
     function Progress() {
@@ -128,7 +132,7 @@ var Confetti = function() {
         this.canvas.width = this.width;
         this.canvas.height = this.height;
 
-        for (var i = 0; i < this.length; ++i) {
+        for (var i = 0; i < this.length; i++) {
             this.ctx.save();
             this.ctx.translate(this.sprites[i].position.initX + this.sprites[i].rotation * Confetti.CONST.ROTATION_RATE * progress, this.sprites[i].position.initY + progress * (this.height + this.yRange));
             this.ctx.rotate(this.sprites[i].rotation);
