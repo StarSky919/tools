@@ -71,59 +71,57 @@
         <span class="title">Password Generator</span>
     </div>
     <div class="row">
-        <div class="main">
-            <h2>密码生成器</h2>
-            <p>
-                <textarea id="result" rows="1" wrap="physical" disabled>设置长度和选项来生成随机密码</textarea>
-            </p>
-            <form class="conditions">
-                <table>
-                    <tr>
-                        <td>密码长度：</td>
-                        <td><input type="number" id="length" onkeydown="check()" /></td>
-                    </tr>
-                    <tr>
-                        <td>大写字母：</td>
-                        <td><label for="uc">A~Z</label></td>
-                        <td>
-                            <input type="checkbox" id="uc" />
-                            <label for="uc">✓</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>小写字母：</td>
-                        <td><label for="lc">a~z</label></td>
-                        <td>
-                            <input type="checkbox" id="lc" />
-                            <label for="lc">✓</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>数字：</td>
-                        <td><label for="num">0~9</label></td>
-                        <td>
-                            <input type="checkbox" id="num" />
-                            <label for="num">✓</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>符号：</td>
-                        <td><label for="mark">!?~=</label></td>
-                        <td>
-                            <input type="checkbox" id="mark" />
-                            <label for="mark">✓</label>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-            <p class="button">
-                <a id="generate">生成</a>
-                <a id="reset">重置</a>
-            </p>
-            <p class="copyright">
-                <i class="fa fa-copyright"></i> 2021 StarSky919
-            </p>
-        </div>
+        <h2>密码生成器</h2>
+        <p>
+            <textarea id="result" rows="1" wrap="physical" disabled>设置长度和选项来生成随机密码</textarea>
+        </p>
+        <form class="conditions">
+            <table>
+                <tr>
+                    <td>密码长度：</td>
+                    <td><input type="number" id="length" onkeydown="check()" /></td>
+                </tr>
+                <tr>
+                    <td>大写字母：</td>
+                    <td><label for="uc">A~Z</label></td>
+                    <td>
+                        <input type="checkbox" id="uc" />
+                        <label for="uc">✓</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>小写字母：</td>
+                    <td><label for="lc">a~z</label></td>
+                    <td>
+                        <input type="checkbox" id="lc" />
+                        <label for="lc">✓</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>数字：</td>
+                    <td><label for="num">0~9</label></td>
+                    <td>
+                        <input type="checkbox" id="num" />
+                        <label for="num">✓</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>符号：</td>
+                    <td><label for="mark">!?~=</label></td>
+                    <td>
+                        <input type="checkbox" id="mark" />
+                        <label for="mark">✓</label>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <p class="button">
+            <a id="generate">生成</a>
+            <a id="reset">重置</a>
+        </p>
+        <p class="copyright">
+            <i class="fa fa-copyright"></i> 2021 StarSky919
+        </p>
     </div>
     <script type="text/javascript" src="../../resources/js/main.js"></script>
     <script type="text/javascript">

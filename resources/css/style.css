@@ -1,4 +1,5 @@
 @import "fontface.css";
+@import "popup.css";
 
 :root {
     --black1: #000000;
@@ -188,17 +189,12 @@ body {
     flex-wrap: wrap;
     min-height: calc(100vh - 50px);
     margin-top: 50px;
+    padding: 5%;
     color: var(--text-color);
     background: var(--main-background);
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-}
-
-.main>.title {
+.row>.title {
     margin: 16px 0;
     padding-bottom: 6px;
     border-bottom: 1px solid var(--title-border);
@@ -206,7 +202,7 @@ body {
     font-weight: bold;
 }
 
-.main>.title~.content p {
+.row>.title~.content p {
     margin: 0;
     padding: 0;
     text-indent: 2em;
