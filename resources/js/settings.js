@@ -97,25 +97,4 @@ var eggs = getElm1('#eggs');
         }
         darkMode.toggle();
     }
-
-    getElm1('#resetSettings').onclick = function() {
-        let warning = confirm('确定恢复全部设置吗？');
-        if (warning) {
-            resetSettings();
-        } else {
-            return;
-        }
-    }
-
-    getElm1('#deleteData').onclick = function() {
-        let warning = confirm('以下项目将被清除：\n\n您在所有工具内设置的选项;\n网站设置;\n\n确定删除数据？');
-        if (warning) {
-            resetSettings();
-            for (let [index, cookies] of document.cookie.split(';').entries()) {
-                setCookie(cookies.split('=')[0], '', -1);
-            }
-        } else {
-            return;
-        }
-    }
 } /*END: Resets*/

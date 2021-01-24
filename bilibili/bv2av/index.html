@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <link rel="icon" href="../resources/logo.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../resources/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <link rel="icon" href="../../resources/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../resources/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../resources/css/style.css" type="text/css" />
     <title>AV & BV转换器</title>
 </head>
 
@@ -18,14 +18,14 @@
         </label>
         <div class="items"></div>
         <span class="home">
-            <a href="../" class="fa fa-home"></a>
+            <a href="../../" class="fa fa-home"></a>
         </span>
         <span class="title">AV & BV Converter</span>
     </div>
     <div class="row">
         <h2>AV & BV转换器</h2>
         <p id="result">输入AV或BV号开始转换</p>
-        <input type="text" class="text" id="ab" placeholder="" />
+        <input type="text" class="text" id="abv" placeholder="" />
         <p class="button">
             <a id="convert" onclick="convert()">转换</a>
             <a id="reset" onclick="reset()">重置</a>
@@ -34,12 +34,13 @@
             <i class="fa fa-copyright"></i> 2021 StarSky919 & lchzh3473
         </p>
     </div>
-    <script type="text/javascript" src="../resources/js/main.js"></script>
+    <script type="text/javascript" src="../../resources/js/main.js"></script>
+
     <script type="text/javascript">
         'use strict'
 
-        let result = document.getElementById('result');
-        let ab = document.getElementById('ab');
+        let result = getElm1('#result');
+        let abv = getElm1('#abv');
 
         let password = "fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF";
         var array = {};
@@ -51,7 +52,7 @@
         let password2 = 8728348608;
 
         function convert() {
-            let input_value = ab.value;
+            let input_value = abv.value;
             if (input_value) {
                 let abv = (input_value.replace(/av/i, "") ^ password1) + password2;
                 let array2 = {};
@@ -92,7 +93,7 @@
 
         function reset() {
             result.innerHTML = '输入AV或BV号开始转换';
-            ab.value = '';
+            abv.value = '';
         }
     </script>
 </body>

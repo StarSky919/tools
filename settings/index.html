@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <link rel="icon" href="../resources/logo.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../resources/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <link rel="icon" href="../resources/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../resources/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../resources/css/style.css" type="text/css" />
     <style type="text/css">
         :root {
             --toggle-background: var(--gray);
@@ -132,15 +132,35 @@
     <script type="text/javascript" src="../resources/js/settings.js"></script>
     <!-- Pop-up Windows -->
     <div class="popup">
-        <div>
-            <p>确定恢复全部设置吗？</p>
+        <div class="dialog">
+            <p id="title"></p>
+            <p id="message"></p>
             <p class="button">
-                <a>取消</a>
-                <a>确定</a>
+                <a id="cancel">取消</a>
+                <a id="confirm">确定</a>
             </p>
         </div>
     </div>
     <script type="text/javascript">
+        getElm1('#resetSettings').onclick = function() {
+            popup.build('提示', '确定恢复全部设置吗？',
+                function() {
+                    resetSettings();
+                });
+            popup.show();
+        }
+
+        getElm1('#deleteData').onclick = function() {
+            popup.build('提示', '以下项目将被清除：<br /><br />您在所有工具内设置的选项;<br />网站设置;<br /><br />确定删除数据？',
+                function() {
+                    resetSettings();
+                    for (let [index, cookies] of document.cookie.split(';').entries()) {
+                        setCookie(cookies.split('=')[0], '', -1);
+                    }
+                });
+            popup.show();
+
+        }
     </script>
 </body>
 

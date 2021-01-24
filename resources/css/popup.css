@@ -1,5 +1,5 @@
 .popup {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -9,10 +9,46 @@
     top: 0;
     left: 0;
     background: var(--black-alpha3);
+    animation: popup 0.2s;
+    z-index: 2000;
 }
 
-.popup div {
+.popup .dialog {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: center;
+    width: 75%;
+    height: auto;
+    max-height: 75%;
+    padding: 16px 32px;
+    color: var(--text-color);
+    background: var(--main-background);
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px var(--black-alpha2);
+    text-align: left;
+}
+
+.popup .dialog #title {
+    margin: 8px 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.popup .dialog #message {
+    overflow: scroll;
+    font-size: 16px;
+}
+
+.popup .dialog p.button a {
+    padding: 4px 8px;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

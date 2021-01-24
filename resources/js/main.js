@@ -37,6 +37,18 @@ function time() {
     return new Date().getHours() >= 22 || new Date().getHours() < 6;
 }
 
+/*Cross-domain Request*/
+function cdr(url, func) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    document.body.appendChild(script);
+    script.onload = function() {
+        func();
+        document.body.removeChild(script);
+    }
+}
+
 var textRegex = {
     replace: function(regex, obj) {
         if (regex.test(obj.value)) {
@@ -45,12 +57,40 @@ var textRegex = {
     }
 }
 
+let popup = {
+    build: function(title, msg, func) {
+        getElm1('#title').innerHTML = title;
+        getElm1('#message').innerHTML = msg;
+        getElm1('#confirm').onclick = function() {
+            func();
+            popup.close();
+        }
+        getElm1('#cancel').onclick = function() {
+            popup.close();
+        }
+        window.onclick = function(event) {
+            switch (event.target) {
+                case getElm1('.popup'):
+                    popup.close();
+                    break;
+            }
+        }
+    },
+    show: function() {
+        getElm1('.popup').style.display = 'flex';
+    },
+    close: function() {
+        getElm1('.popup').style.display = 'none';
+    }
+}
+
 /*END: Global Settings*/
 
 /*START: Navigation Bar*/
 
 let tools = [
-    ['bv2av/', 'AV & BV 转换器'],
+    ['bilibili/bv2av/', 'AV & BV 转换器'],
+    ['bilibili/cover', 'B站视频封面提取'],
     ['cy2calc/', 'Cytus II计算器'],
     ['random/password/', '密码生成器'],
     ['color/', '颜色工具'],
