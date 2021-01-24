@@ -80,6 +80,7 @@ var limit = getElm1('#unlimited');
             toggle.checked = false;
             toggle.disabled = false;
         }
+        theme.navBar.toggle();
         darkMode.toggle();
     }
 } /*END: Resets*/
