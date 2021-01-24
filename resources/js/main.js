@@ -1,5 +1,3 @@
-'use strict'
-
 /*START: Global Settings*/
 
 function getElm1(query) {
@@ -90,7 +88,7 @@ let popup = {
 
 let tools = [
     ['bilibili/bv2av/', 'AV & BV 转换器'],
-    ['bilibili/cover', 'B站视频封面提取'],
+    ['bilibili/cover/', 'B站视频封面提取'],
     ['cy2calc/', 'Cytus II计算器'],
     ['random/password/', '密码生成器'],
     ['color/', '颜色工具'],
