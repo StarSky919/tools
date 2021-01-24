@@ -28,6 +28,10 @@
     text-align: left;
 }
 
+.dark-mode .popup .dialog {
+    border: 1px solid var(--border-color);
+}
+
 .popup .dialog #title {
     margin: 8px 0;
     font-size: 1.25rem;

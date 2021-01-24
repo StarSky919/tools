@@ -24,61 +24,40 @@
     </div>
     <div class="row">
         <h2>B站视频封面提取</h2>
-        <p id="result">输入AV或BV号</p>
-        <input type="text" class="text" id="abv" placeholder="" onkeydown="check(this)" />
+        <p id="result">请输入AV或BV号</p>
+        <input type="text" class="text" id="abv" placeholder="请带上AV或BV前缀" onkeydown="check(this)" />
         <p class="button">
             <a id="extract">提取</a>
+            <a id="reset">重置</a>
         </p>
         <p class="copyright">
             <i class="fa fa-copyright"></i> 2021 StarSky919
         </p>
     </div>
     <script type="text/javascript" src="../../resources/js/main.js"></script>
+    <script type="text/javascript" src="../../resources/js/bilibili.js"></script>
     <script type="text/javascript">
-        let regex = {
-            abv: /^[AaBb][Vv]?/,
-            aid: /[Aa][Vv]+[0-9]{1,8}$/,
-            bvid: /[Bb][Vv][0-9A-Za-z]{10}/,
-            rp1: /[^0-9A-Za-z]/
-        }
-
         let getPic = function() {
-            var result = getElm1('#result');
             switch (video.code) {
-                case 62002:
-                    result.innerHTML = '视频已被删除或不可见';
-                    break;
                 case 0:
-                    result.innerHTML = `视频标题：${video.data.title}<br />Up主：${video.data.owner.name}<br />视频封面：<a href="${video.data.pic}">点此进入</a>`;
+                    result.innerHTML = `视频标题：${video.data.title}<br />Up主：${video.data.owner.name}<br />视频封面：<a href="${String(video.data.pic)}" rel="noreferrer" target="_blank">点此进入</a>`;
                     break;
                 default:
-                    result.innerHTML = '输入错误或视频不存在';
+                    result.innerHTML = '视频不存在或已被删除';
                     break;
             }
         }
 
-        function isAv(id) {
-            var abv = id.replace(regex.abv, '');
-            if (id.toLowerCase().indexOf('av') == 0 && ('av' + abv).match(regex.aid) != null) {
-                return true
-            };
-            return false;
-        }
-
-        function check(obj) {
-            setTimeout(function() {
-                textRegex.replace(regex.rp1, obj);
-            }, 1);
-        }
-
         getElm1('#extract').onclick = function() {
-            var abv = getElm1('#abv').value.replace(regex.abv, '');
-            if (isAv(abv)) {
-                cdr(`https://api.bilibili.com/x/web-interface/view?aid=${abv}&callback=var%20video%20=%20&jsonp=jsonp`,
+            var abv = getElm1('#abv').value;
+            if (getType(abv) == 1) {
+                cdr(`https://api.bilibili.com/x/web-interface/view?aid=${abv.replace(regex.abv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
+                    getPic);
+            } else if (getType(abv) == 2) {
+                cdr(`https://api.bilibili.com/x/web-interface/view?bvid=${abv.replace(regex.abv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
                     getPic);
             } else {
-                cdr(`https://api.bilibili.com/x/web-interface/view?bvid=${abv}&callback=var%20video%20=%20&jsonp=jsonp`,
-                    getPic);
+                incorrect();
             }
         }
     </script>
