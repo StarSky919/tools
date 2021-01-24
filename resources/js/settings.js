@@ -1,8 +1,9 @@
+setCookie('eggs', '', -1);
+
 var color = getElm1('#mainColor');
 var transparent = getElm1('#transparentNav');
 var dark = getElm1('#darkMode');
 var limit = getElm1('#unlimited');
-var eggs = getElm1('#eggs');
 
 /*START: Theme Settings*/
 {
@@ -67,21 +68,6 @@ var eggs = getElm1('#eggs');
     }
 } /*END: Password Length Unlimited*/
 
-/*START: Eggs*/
-{
-    if (getCookie('eggs') == 'on') {
-        eggs.checked = true;
-    }
-
-    eggs.onclick = function() {
-        if (eggs.checked) {
-            setCookie('eggs', 'on', 365);
-        } else {
-            setCookie('eggs', 'off', 365);
-        }
-    }
-} /*END: Eggs*/
-
 /*START: Resets*/
 {
     function resetSettings() {
@@ -90,7 +76,6 @@ var eggs = getElm1('#eggs');
         setCookie('darkMode', 'off', 365);
         setCookie('autoDM', 'off', 365);
         setCookie('unlimited', 'off', 365);
-        setCookie('eggs', 'off', 365);
         for (let [index, toggle] of getElm2('input[type=checkbox]').entries()) {
             toggle.checked = false;
             toggle.disabled = false;
