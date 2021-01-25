@@ -1,3 +1,13 @@
+var cd = document.createElement('script');
+cd.type = 'text/javascript';
+cd.src = `https://unpkg.com/current-device/umd/current-device.min.js`;
+document.head.appendChild(cd);
+cd.onload = function() {
+    if(!device.mobile() && !device.tablet()) {
+        document.write('请使用移动端设备访问此页面');
+    }
+}
+
 /*START: Global Settings*/
 
 function getElm1(query) {
