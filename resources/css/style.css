@@ -184,7 +184,7 @@ body {
     background: var(--white-alpha1);
 }
 
-.row {
+.main {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -195,7 +195,7 @@ body {
     background: var(--main-background);
 }
 
-.row>.title {
+.main>.title {
     margin: 16px 0;
     padding-bottom: 6px;
     border-bottom: 1px solid var(--title-border);
@@ -203,7 +203,7 @@ body {
     font-weight: bold;
 }
 
-.row>.title~.content p {
+.main>.title~.content p {
     margin: 0;
     padding: 0;
     text-indent: 2em;
@@ -288,7 +288,7 @@ p.copyright {
 }
 
 @media screen and (min-width: 768px) {
-    .row {
+    .main {
         max-width: 75%;
         margin: 50px auto auto;
     }

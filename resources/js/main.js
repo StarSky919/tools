@@ -3,9 +3,10 @@ cd.type = 'text/javascript';
 cd.src = `https://unpkg.com/current-device/umd/current-device.min.js`;
 document.head.appendChild(cd);
 cd.onload = function() {
-    if(!device.mobile() && !device.tablet()) {
+    if (!device.mobile() && !device.tablet()) {
         document.write('请使用移动端设备访问此页面');
     }
+    document.head.removeChild(cd);
 }
 
 /*START: Global Settings*/
@@ -131,7 +132,7 @@ function closeMenu() {
     getElm1('#checkbox').checked = false;
 }
 
-getElm1('.row').onclick = function(event) {
+getElm1('.main').onclick = function(event) {
     closeMenu();
 }
 
