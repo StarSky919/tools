@@ -72,7 +72,6 @@ let popup = {
         getElm1('#message').innerHTML = msg;
         getElm1('#confirm').onclick = function() {
             func();
-            popup.close();
         }
         getElm1('#cancel').onclick = function() {
             popup.close();
@@ -150,14 +149,7 @@ let theme = {
             document.documentElement.style.setProperty('--main-color', color);
         },
         toggle: function() {
-            switch (getCookie('mainColor')) {
-                case '#9898FF':
-                    document.documentElement.style.setProperty('--main-color', '#9898FF');
-                    break;
-                case '#FEA29F':
-                    document.documentElement.style.setProperty('--main-color', '#FEA29F');
-                    break;
-            }
+            theme.mainColor.set(getCookie('mainColor'));
         }
     },
     navBar: {

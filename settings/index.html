@@ -16,22 +16,30 @@
             --toggle-background: var(--gray);
         }
 
-        .toggle {
+        .row {
             display: flex;
             justify-content: space-between;
-            line-height: 24px;
             margin: 8px 0;
         }
-        
-        .toggle>span {
+
+        .row.button {
+            align-items: center;
+            line-height: 85%;
+        }
+
+        .row.button a {
+            padding: 4px 8px;
+        }
+
+        .row>span {
             /*something...*/
         }
 
-        .toggle input {
+        .row input {
             display: none;
         }
 
-        .toggle label span {
+        .row label span {
             display: inline-block;
             position: relative;
             width: 50px;
@@ -41,7 +49,7 @@
             transition: background 0.25s ease, filter 0.25s ease;
         }
 
-        .toggle label span::before {
+        .row label span::before {
             content: "";
             display: inline-block;
             position: absolute;
@@ -54,15 +62,15 @@
             transition: transform 0.25s ease;
         }
 
-        .toggle input:checked+span {
+        .row input:checked+span {
             background: var(--main-color);
         }
 
-        .toggle input:checked+span::before {
+        .row input:checked+span::before {
             transform: translateX(calc(50% + 45% + 12.5%));
         }
 
-        .toggle input:disabled+span {
+        .row input:disabled+span {
             filter: brightness(50%);
         }
     </style>
@@ -84,21 +92,18 @@
     <div class="main">
         <h2>网站设置</h2>
         <div class="title">主题设置</div>
-        <div class="toggle">
+        <div class="row button">
             <span>主题色切换</span>
-            <label for="mainColor">
-                <input type="checkbox" id="mainColor">
-                <span></span>
-            </label>
+            <a id="changeColor">选择颜色</a>
         </div>
-        <div class="toggle">
+        <div class="row">
             <span>导航栏透明</span>
             <label for="transparentNav">
                 <input type="checkbox" id="transparentNav" />
                 <span></span>
             </label>
         </div>
-        <div class="toggle">
+        <div class="row">
             <span>启用深色模式</span>
             <label for="darkMode">
                 <input type="checkbox" id="darkMode" />
@@ -106,7 +111,7 @@
             </label>
         </div>
         <div class="title">其他设置</div>
-        <div class="toggle">
+        <div class="row">
             <span>密码生成器无限长度</span>
             <label for="unlimited">
                 <input type="checkbox" id="unlimited">
@@ -123,6 +128,44 @@
     </div>
     <script type="text/javascript" src="../resources/js/main.js"></script>
     <script type="text/javascript" src="../resources/js/settings.js"></script>
+    <!-- Pick up Colors -->
+    <div class="popupContents">
+        <div class="colors">
+            <style type="text/css">
+                .color-row {
+                    display: flex;
+                    justify-content: space-between;
+                    height: 36px;
+                    margin: 16px 0;
+                }
+
+                .color-row span {
+                    display: inline-block;
+                    width: 24%;
+                    height: 100%;
+                    border: 1px solid var(--border-color);
+                }
+            </style>
+            <div>
+                <span style="width: 5%;">#</span>
+                <input type="text" class="text" style="width: 94%;" placeholder="HEX" onkeydown="check(this)" />
+            </div>
+            <div class="rows">
+                <div class="color-row">
+                    <span style="--color: #9898FF; background: var(--color);"></span>
+                    <span style="--color: #FEA29F; background: var(--color);"></span>
+                    <span style="--color: #8CCDFD; background: var(--color);"></span>
+                    <span style="--color: #64DD64; background: var(--color);"></span>
+                </div>
+                <div class="color-row">
+                    <span style="--color: #FF4567; background: var(--color);"></span>
+                    <span style="--color: #BFA4D2; background: var(--color);"></span>
+                    <span style="--color: #EA8736; background: var(--color);"></span>
+                    <span style="--color: #5C6AC4; background: var(--color);"></span>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Pop-up Windows -->
     <div class="popup">
         <div class="dialog">
@@ -135,10 +178,53 @@
         </div>
     </div>
     <script type="text/javascript">
+        getElm1('#changeColor').onclick = function() {
+            popup.build('输入或选择颜色', getElm1('.colors').innerHTML,
+                function() {
+                    if (getElm1('.popup input').value.length == 6) {
+                        setCookie('mainColor', `#${getElm1('.popup input').value}`, 365);
+                        theme.mainColor.toggle();
+                        popup.close();
+                    } else {
+                        var tip = document.createElement('p');
+                        tip.innerHTML = '请输入正确的值！';
+                        getElm1('.popup #message').appendChild(tip);
+                        setTimeout(function() {
+                            getElm1('.popup #message').removeChild(tip);
+                        }, 2000);
+                    }
+                });
+            popup.show();
+            if (getCookie('mainColor') != '') {
+                getElm1('.popup input').value = getCookie('mainColor').replace(/#/, '');
+            } else {
+                getElm1('.popup input').value = '9898FF';
+            }
+            var span = getElm2('.popup .rows span');
+            for (let [index, elm] of span.entries()) {
+                span[index].onclick = function() {
+                    getElm1('.popup input').value = span[index].style.getPropertyValue('--color').replace(/#/, '').replace(/\s/, '');
+                }
+            }
+        }
+
+
+        function check(obj) {
+            setTimeout(function() {
+                if (obj.value.length > 6) {
+                    obj.value = obj.value.slice(0, 6);
+                }
+                textRegex.replace(/[^0-9A-Fa-f]/g, obj);
+                obj.value = obj.value.toUpperCase();
+
+            }, 1);
+        }
+
         getElm1('#resetSettings').onclick = function() {
             popup.build('提示', '确定恢复全部设置吗？',
                 function() {
                     resetSettings();
+                    popup.close();
                 });
             popup.show();
         }
@@ -150,6 +236,7 @@
                     for (let [index, cookies] of document.cookie.split(';').entries()) {
                         setCookie(cookies.split('=')[0], '', -1);
                     }
+                    popup.close();
                 });
             popup.show();
         }

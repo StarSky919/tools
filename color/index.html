@@ -8,8 +8,22 @@
     <link rel="shortcut icon" href="../resources/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="../resources/css/style.css" type="text/css" />
     <style type="text/css">
-        .converter .text.rh {
-            width: 3em;
+        .converter .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .converter .row.rgb * {
+            width: 24%;
+        }
+
+        .converter .row.hex span {
+            width: 24%;
+        }
+
+        .converter .row.hex input {
+            width: 74.67%;
         }
 
         .color {
@@ -18,10 +32,6 @@
             margin: 16px 0;
             border: 1px solid var(--border-color);
             border-radius: 4px
-        }
-
-        #hex {
-            width: 6em;
         }
     </style>
     <title>颜色工具</title>
@@ -42,17 +52,16 @@
     <div class="main">
         <h2>颜色工具</h2>
         <div class="title">颜色转换</div>
-        <p>输入RGB或HEX即可实时预览和转换</p>
+        <p>输入颜色即可实时预览与转换</p>
         <div class="converter">
-            <div>
-                RGB：
-                <input type="text" id="red" class="text rh" placeholder="R" onkeydown="execute(this)">
-                <input type="text" id="green" class="text rh" placeholder="G" onkeydown="execute(this)">
-                <input type="text" id="blue" class="text rh" placeholder="B" onkeydown="execute(this)">
+            <div class="row rgb">
+                <span>RGB：</span>
+                <input type="text" id="red" class="text" placeholder="R" onkeydown="execute(this)">
+                <input type="text" id="green" class="text" placeholder="G" onkeydown="execute(this)">
+                <input type="text" id="blue" class="text" placeholder="B" onkeydown="execute(this)">
             </div>
-            <div>
-                HEX：
-                <span>#</span>
+            <div class="row hex">
+                <span>HEX：#</span>
                 <input type="text" id="hex" class="text" placeholder="HEX" onkeydown="execute(this)">
             </div>
         </div>
@@ -103,6 +112,9 @@
                 getElm1('#green').value = parseInt('0x' + hex.slice(2, 4));
                 getElm1('#blue').value = parseInt('0x' + hex.slice(4, 6));
                 getElm1('.color').style.background = '#' + hex;
+            },
+            toHSL: function() {
+                /*something...*/
             }
         }
 
@@ -111,11 +123,13 @@
                 setTimeout(function() {
                     check.hex(obj);
                     convert.toRGB(obj.value);
+                    convert.toHSL();
                 }, 1);
             } else {
                 setTimeout(function() {
                     check.rgb(obj);
                     convert.toHEX();
+                    convert.toHSL();
                 }, 1);
             }
         }

@@ -1,16 +1,11 @@
 setCookie('eggs', '', -1);
 
-var color = getElm1('#mainColor');
 var transparent = getElm1('#transparentNav');
 var dark = getElm1('#darkMode');
 var limit = getElm1('#unlimited');
 
 /*START: Theme Settings*/
 {
-    if (getCookie('mainColor') == '#FEA29F') {
-        color.checked = true;
-    }
-
     if (getCookie('transparentNav') == 'on') {
         transparent.checked = true;
     }
@@ -18,15 +13,6 @@ var limit = getElm1('#unlimited');
     if (getCookie('darkMode') == 'on') {
         dark.checked = true;
         transparent.disabled = true;
-    }
-
-    color.onclick = function() {
-        if (color.checked) {
-            setCookie('mainColor', '#FEA29F', 365);
-        } else {
-            setCookie('mainColor', '#9898FF', 365);
-        }
-        theme.mainColor.toggle();
     }
 
     transparent.onclick = function() {
@@ -80,6 +66,7 @@ var limit = getElm1('#unlimited');
             toggle.checked = false;
             toggle.disabled = false;
         }
+        theme.mainColor.set('#9898FF');
         theme.navBar.toggle();
         darkMode.toggle();
     }

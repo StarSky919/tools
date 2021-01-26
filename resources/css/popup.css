@@ -1,3 +1,7 @@
+.popupContents {
+    display: none;
+}
+
 .popup {
     display: none;
     flex-direction: column;
@@ -39,6 +43,8 @@
 }
 
 .popup .dialog #message {
+    display: flex;
+    flex-direction: column;
     overflow: scroll;
     font-size: 16px;
 }
