@@ -1,0 +1,77 @@
+:root {
+    --color1: #353941;
+    --color2: #C0C0FF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color1);
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+   /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);*/
+}
+
+.button {
+    position: relative;
+    padding: 6px 20px;
+    line-height: 24px;
+    margin: 8px;
+    text-decoration: none;
+    text-align: center;
+    color: var(--color2);
+    filter: hue-rotate(calc(var(--i) * 60deg));
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.button::before,
+.button::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--color2);
+    transition: all 0.3s;
+}
+
+.button::before {
+    top: 0;
+    left: 0;
+    border-bottom: none;
+    border-right: none;
+}
+
+.button::after {
+    bottom: 0;
+    right: 0;
+    border-top: none;
+    border-left: none;
+}
+
+.button:hover {
+    color: #fff;
+    background: var(--color2);
+    box-shadow: 0 0 5px var(--color2);
+    transition: 0.3s 0.15s;
+
+}
+
+.button:hover::after,
+.button:hover::before {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+}
