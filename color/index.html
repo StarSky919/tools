@@ -65,7 +65,7 @@
                 <input type="text" id="hex" class="text" placeholder="HEX" onkeydown="execute(this)">
             </div>
             <div class="row i4">
-                <span>RGB：</span>
+                <span>HSL：</span>
                 <input type="text" id="hue" class="text" placeholder="H" onkeydown="execute(this)">
                 <input type="text" id="strt" class="text" placeholder="S" onkeydown="execute(this)">
                 <input type="text" id="ltns" class="text" placeholder="L" onkeydown="execute(this)">
@@ -97,10 +97,13 @@
                 }
                 textRegex.replace(regex.hex, obj);
                 obj.value = obj.value.toUpperCase();
+            },
+            hsl: function(obj) {
+                /*something...*/
             }
         }
 
-        var convert = {
+        let convert = {
             toHEX: function() {
                 let r = getElm1('#red').value;
                 let g = getElm1('#green').value;
@@ -124,18 +127,22 @@
             }
         }
 
-        function execute(obj) {
+        let execute = function(obj) {
             if (obj.id == 'hex') {
                 setTimeout(function() {
                     check.hex(obj);
                     convert.toRGB(obj.value);
                     convert.toHSL();
                 }, 1);
-            } else {
+            } else if (obj.id == 'red' || obj.id == 'green' || obj.id == 'blue') {
                 setTimeout(function() {
                     check.rgb(obj);
                     convert.toHEX();
                     convert.toHSL();
+                }, 1);
+            } else {
+                setTimeout(function() {
+                    /*something...*/
                 }, 1);
             }
         }

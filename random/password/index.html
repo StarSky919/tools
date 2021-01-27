@@ -144,8 +144,8 @@
             }
         }
 
-        var preset = '8|true|false|true|false';
-        var values = getCookie('defaultValue');
+        let preset = '8|true|false|true|false';
+        let values = getCookie('defaultValue');
 
         if (values == '') {
             setCookie('defaultValue', preset, 365);
@@ -156,7 +156,7 @@
 
         function check() {
             setTimeout(function() {
-                var num = getElm1('#length');
+                let num = getElm1('#length');
                 if (Number(num.value) > 16 && getCookie('unlimited') != 'on') {
                     num.value = 16;
                 }
@@ -167,7 +167,7 @@
         }
 
         function autoHeight() {
-            var text = getElm1('#result');
+            let text = getElm1('#result');
             text.style.height = 'inherit';
             text.style.height = text.scrollHeight + 'px';
         }
@@ -193,7 +193,7 @@
 
             setCookie('defaultValue', `${length}|${uc}|${lc}|${num}|${mark}`, 365);
 
-            var password = '';
+            password = '';
             while (password.length < length) {
                 let rdm1 = Math.ceil(Math.random() * 4);
                 let rdm2 = function(obj) {

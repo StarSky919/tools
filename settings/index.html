@@ -186,7 +186,7 @@
                         theme.mainColor.toggle();
                         popup.close();
                     } else {
-                        var tip = document.createElement('p');
+                        let tip = document.createElement('p');
                         tip.innerHTML = '请输入正确的值！';
                         getElm1('.popup #message').appendChild(tip);
                         setTimeout(function() {
@@ -200,7 +200,7 @@
             } else {
                 getElm1('.popup input').value = '9898FF';
             }
-            var span = getElm2('.popup .rows span');
+            let span = getElm2('.popup .rows span');
             for (let [index, elm] of span.entries()) {
                 span[index].onclick = function() {
                     getElm1('.popup input').value = span[index].style.getPropertyValue('--color').replace(/#/, '').replace(/\s/, '');

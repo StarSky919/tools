@@ -1,14 +1,3 @@
-var cd = document.createElement('script');
-cd.type = 'text/javascript';
-cd.src = `https://unpkg.com/current-device/umd/current-device.min.js`;
-document.head.appendChild(cd);
-cd.onload = function() {
-    if (!device.mobile() && !device.tablet()) {
-        document.write('请使用移动端设备访问此页面');
-    }
-    document.head.removeChild(cd);
-}
-
 /*START: Global Settings*/
 
 function getElm1(query) {
@@ -20,17 +9,17 @@ function getElm2(query) {
 }
 
 function setCookie(name, value, days) {
-    var date = new Date();
+    let date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    var expires = 'expires=' + date.toGMTString();
+    let expires = 'expires=' + date.toGMTString();
     document.cookie = `${name}=${value};${expires};path=/`;
 }
 
 function getCookie(cname) {
-    var name = cname + '=';
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
+    let name = cname + '=';
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
@@ -48,7 +37,7 @@ function time() {
 
 /*Cross-domain Request*/
 function cdr(url, func) {
-    var script = document.createElement('script');
+    script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = url;
     document.body.appendChild(script);
@@ -58,7 +47,17 @@ function cdr(url, func) {
     }
 }
 
-var textRegex = {
+function copy(obj) {
+    let selection = window.getSelection();
+    let range = document.createRange();
+    range.selectNodeContents(obj);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('copy');
+    selection.removeAllRanges();
+}
+
+let textRegex = {
     replace: function(regex, obj) {
         if (regex.test(obj.value)) {
             obj.value = obj.value.replace(regex, '');
@@ -93,6 +92,13 @@ let popup = {
 }
 
 /*END: Global Settings*/
+
+cdr(`https://unpkg.com/current-device/umd/current-device.min.js`,
+    function() {
+        if (!device.mobile() && !device.tablet()) {
+            document.write('请使用移动端设备访问此页面');
+        }
+    });
 
 /*START: Navigation Bar*/
 
@@ -154,7 +160,7 @@ let theme = {
     },
     navBar: {
         toggle: function() {
-            var regex = /cy2calc/;
+            let regex = /cy2calc/;
             if (getCookie('colorNav') == 'on') {
                 getElm1('.nav').classList.add('color-follow');
                 if (regex.test(location.href)) {
