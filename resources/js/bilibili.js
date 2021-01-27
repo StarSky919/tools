@@ -5,8 +5,8 @@ let regex = {
     rp: /[^0-9A-Za-z]/g
 }
 
-let abv = getElm1('#abv');
-let result = getElm1('#result');
+let abv = getElm('#abv');
+let result = getElm('#result');
 
 function check(obj) {
     setTimeout(function() {
@@ -24,7 +24,7 @@ function getType(id) {
     }
 }
 
-getElm1('#reset').onclick = function() {
+getElm('#reset').onclick = function() {
     result.innerHTML = '请输入AV或BV号';
     abv.value = '';
 }

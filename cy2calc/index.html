@@ -146,19 +146,19 @@
     </div>
     <script type="text/javascript" src="../resources/js/main.js"></script>
     <script type="text/javascript">
-        let container = getElm1('.container');
+        let container = getElm('.container');
 
         let initialize = function() {
-            getElm1('.footer .gr').classList.add('active');
-            getElm1('.footer .atp').classList.remove('active');
+            getElm('.footer .gr').classList.add('active');
+            getElm('.footer .atp').classList.remove('active');
             container.style.transform = 'none';
         }
 
-        getElm1('.footer .gr').onclick = initialize;
+        getElm('.footer .gr').onclick = initialize;
 
-        getElm1('.footer .atp').onclick = function() {
-            getElm1('.footer .atp').classList.add('active');
-            getElm1('.footer .gr').classList.remove('active');
+        getElm('.footer .atp').onclick = function() {
+            getElm('.footer .atp').classList.add('active');
+            getElm('.footer .gr').classList.remove('active');
             container.style.transform = 'translateX(-50%)';
         }
 
@@ -166,8 +166,8 @@
 
         /*────────*/
 
-        let result1 = getElm1('.gr #result');
-        let result2 = getElm1('.atp #result');
+        let result1 = getElm('.gr #result');
+        let result2 = getElm('.atp #result');
 
         let str = '开始计算以查看结果';
 
@@ -182,10 +182,10 @@
 
         let res = {
             gr: function(res) {
-                getElm1('.gr #result').innerHTML = `您的小P数量为：${res}`;
+                getElm('.gr #result').innerHTML = `您的小P数量为：${res}`;
             },
             atp: function(res) {
-                getElm1('.atp #result').innerHTML = `您的已通关歌曲平均TP为${res}%`;
+                getElm('.atp #result').innerHTML = `您的已通关歌曲平均TP为${res}%`;
             }
         }
 
@@ -197,12 +197,12 @@
             return bp;
         }
 
-        getElm1('.gr #calc').onclick = function() {
-            let stp = Number(getElm1('#stp').value);
-            let perfect = Number(getElm1('#perfect').value);
-            let good = Number(getElm1('#good').value);
-            let bad = Number(getElm1('#bad').value);
-            let miss = Number(getElm1('#miss').value);
+        getElm('.gr #calc').onclick = function() {
+            let stp = Number(getElm('#stp').value);
+            let perfect = Number(getElm('#perfect').value);
+            let good = Number(getElm('#good').value);
+            let bad = Number(getElm('#bad').value);
+            let miss = Number(getElm('#miss').value);
 
             if (stp > 100 || stp <= 0 || perfect + good + bad + miss == 0) {
                 al.gr();
@@ -215,7 +215,7 @@
                     al.gr();
                     return;
                 } else {
-                    getElm1('.gr #result') = '您没有小P！';
+                    getElm('.gr #result') = '您没有小P！';
                     return;
                 }
             } else {
@@ -224,7 +224,7 @@
                     al.gr();
                     return;
                 } else if (gr == 0) {
-                    getElm1('.gr #result') = '您没有小P！';
+                    getElm('.gr #result') = '您没有小P！';
                     return;
                 } else {
                     res.gr(gr);
@@ -232,26 +232,26 @@
             }
         }
 
-        getElm1('.gr #reset').onclick = function() {
+        getElm('.gr #reset').onclick = function() {
             result1.innerHTML = str;
-            getElm1('#stp').value = '';
-            getElm1('#perfect').value = '';
-            getElm1('#good').value = '';
-            getElm1('#bad').value = '';
-            getElm1('#miss').value = '';
+            getElm('#stp').value = '';
+            getElm('#perfect').value = '';
+            getElm('#good').value = '';
+            getElm('#bad').value = '';
+            getElm('#miss').value = '';
         }
 
         /*END: Black Perfect*/
 
         /*START: Average TP*/
 
-        getElm1('.atp #calc').onclick = function() {
-            let atp = Number(getElm1('#atp').value);
-            let ez = Number(getElm1('#ez').value);
-            let hd = Number(getElm1('#hd').value);
-            let ch = Number(getElm1('#ch').value);
-            let gl = Number(getElm1('#gl').value);
-            let total = Number(getElm1('#total').value);
+        getElm('.atp #calc').onclick = function() {
+            let atp = Number(getElm('#atp').value);
+            let ez = Number(getElm('#ez').value);
+            let hd = Number(getElm('#hd').value);
+            let ch = Number(getElm('#ch').value);
+            let gl = Number(getElm('#gl').value);
+            let total = Number(getElm('#total').value);
 
             if (atp > 100 || ez + hd + ch + gl <= 0 || ez + hd + ch + gl > total || total == 0 || (atp / 100) / ((ez + hd + ch + gl) / total) > 1) {
                 al.atp();
@@ -272,14 +272,14 @@
             }
         }
 
-        getElm1('.atp #reset').onclick = function() {
+        getElm('.atp #reset').onclick = function() {
             result2.innerHTML = str;
-            getElm1('#atp').value = '';
-            getElm1('#ez').value = '';
-            getElm1('#hd').value = '';
-            getElm1('#ch').value = '';
-            getElm1('#gl').value = '';
-            getElm1('#total').value = '';
+            getElm('#atp').value = '';
+            getElm('#ez').value = '';
+            getElm('#hd').value = '';
+            getElm('#ch').value = '';
+            getElm('#gl').value = '';
+            getElm('#total').value = '';
         }
 
         /*END: Average TP*/

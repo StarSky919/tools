@@ -48,8 +48,8 @@
             }
         }
 
-        getElm1('#extract').onclick = function() {
-            let abv = getElm1('#abv').value;
+        getElm('#extract').onclick = function() {
+            let abv = getElm('#abv').value;
             if (getType(abv) == 1) {
                 cdr(`https://api.bilibili.com/x/web-interface/view?aid=${abv.replace(regex.abv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
                     getPic);

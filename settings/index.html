@@ -178,32 +178,32 @@
         </div>
     </div>
     <script type="text/javascript">
-        getElm1('#changeColor').onclick = function() {
-            popup.build('输入或选择颜色', getElm1('.colors').innerHTML,
+        getElm('#changeColor').onclick = function() {
+            popup.build('输入或选择颜色', getElm('.colors').innerHTML,
                 function() {
-                    if (getElm1('.popup input').value.length == 6) {
-                        setCookie('mainColor', `#${getElm1('.popup input').value}`, 365);
+                    if (getElm('.popup input').value.length == 6) {
+                        setCookie('mainColor', `#${getElm('.popup input').value}`, 365);
                         theme.mainColor.toggle();
                         popup.close();
                     } else {
                         let tip = document.createElement('p');
                         tip.innerHTML = '请输入正确的值！';
-                        getElm1('.popup #message').appendChild(tip);
+                        getElm('.popup #message').appendChild(tip);
                         setTimeout(function() {
-                            getElm1('.popup #message').removeChild(tip);
+                            getElm('.popup #message').removeChild(tip);
                         }, 2000);
                     }
                 });
             popup.show();
             if (getCookie('mainColor') != '') {
-                getElm1('.popup input').value = getCookie('mainColor').replace(/#/, '');
+                getElm('.popup input').value = getCookie('mainColor').replace(/#/, '');
             } else {
-                getElm1('.popup input').value = '9898FF';
+                getElm('.popup input').value = '9898FF';
             }
-            let span = getElm2('.popup .rows span');
+            let span = getElmAll('.popup .rows span');
             for (let [index, elm] of span.entries()) {
                 span[index].onclick = function() {
-                    getElm1('.popup input').value = span[index].style.getPropertyValue('--color').replace(/#/, '').replace(/\s/, '');
+                    getElm('.popup input').value = span[index].style.getPropertyValue('--color').replace(/#/, '').replace(/\s/, '');
                 }
             }
         }
@@ -220,7 +220,7 @@
             }, 1);
         }
 
-        getElm1('#resetSettings').onclick = function() {
+        getElm('#resetSettings').onclick = function() {
             popup.build('提示', '确定恢复全部设置吗？',
                 function() {
                     resetSettings();
@@ -229,7 +229,7 @@
             popup.show();
         }
 
-        getElm1('#deleteData').onclick = function() {
+        getElm('#deleteData').onclick = function() {
             popup.build('提示', '以下项目将被清除：<br /><br />您在所有工具内设置的选项;<br />网站设置;<br /><br />确定删除数据？',
                 function() {
                     resetSettings();

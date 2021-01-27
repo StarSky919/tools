@@ -105,22 +105,22 @@
 
         let convert = {
             toHEX: function() {
-                let r = getElm1('#red').value;
-                let g = getElm1('#green').value;
-                let b = getElm1('#blue').value;
+                let r = getElm('#red').value;
+                let g = getElm('#green').value;
+                let b = getElm('#blue').value;
                 if (r.length < 1) return;
                 if (g.length < 1) return;
                 if (b.length < 1) return;
                 let hex = ((1 << 24) + (Number(r) << 16) + (Number(g) << 8) + Number(b)).toString(16).toUpperCase().slice(1);
-                getElm1('#hex').value = hex;
-                getElm1('.color').style.background = '#' + hex;
+                getElm('#hex').value = hex;
+                getElm('.color').style.background = '#' + hex;
             },
             toRGB: function(hex) {
                 if (hex.length < 6) return;
-                getElm1('#red').value = parseInt('0x' + hex.slice(0, 2));
-                getElm1('#green').value = parseInt('0x' + hex.slice(2, 4));
-                getElm1('#blue').value = parseInt('0x' + hex.slice(4, 6));
-                getElm1('.color').style.background = '#' + hex;
+                getElm('#red').value = parseInt('0x' + hex.slice(0, 2));
+                getElm('#green').value = parseInt('0x' + hex.slice(2, 4));
+                getElm('#blue').value = parseInt('0x' + hex.slice(4, 6));
+                getElm('.color').style.background = '#' + hex;
             },
             toHSL: function() {
                 /*something...*/

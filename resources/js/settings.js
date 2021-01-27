@@ -1,9 +1,9 @@
 setCookie('transparentNav', '', -1);
 setCookie('eggs', '', -1);
 
-var colorNav = getElm1('#colorNav');
-var dark = getElm1('#darkMode');
-var limit = getElm1('#unlimited');
+var colorNav = getElm('#colorNav');
+var dark = getElm('#darkMode');
+var limit = getElm('#unlimited');
 
 /*START: Theme Settings*/
 {
@@ -63,7 +63,7 @@ var limit = getElm1('#unlimited');
         setCookie('darkMode', 'off', 365);
         setCookie('autoDM', 'off', 365);
         setCookie('unlimited', 'off', 365);
-        for (let [index, toggle] of getElm2('input[type=checkbox]').entries()) {
+        for (let [index, toggle] of getElmAll('input[type=checkbox]').entries()) {
             toggle.checked = false;
             toggle.disabled = false;
         }

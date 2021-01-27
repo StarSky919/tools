@@ -1,10 +1,10 @@
 /*START: Global Settings*/
 
-function getElm1(query) {
+function getElm(query) {
     return document.querySelector(query);
 }
 
-function getElm2(query) {
+function getElmAll(query) {
     return document.querySelectorAll(query);
 }
 
@@ -67,27 +67,27 @@ let textRegex = {
 
 let popup = {
     build: function(title, msg, func) {
-        getElm1('#title').innerHTML = title;
-        getElm1('#message').innerHTML = msg;
-        getElm1('#confirm').onclick = function() {
+        getElm('#title').innerHTML = title;
+        getElm('#message').innerHTML = msg;
+        getElm('#confirm').onclick = function() {
             func();
         }
-        getElm1('#cancel').onclick = function() {
+        getElm('#cancel').onclick = function() {
             popup.close();
         }
         window.onclick = function(event) {
             switch (event.target) {
-                case getElm1('.popup'):
+                case getElm('.popup'):
                     popup.close();
                     break;
             }
         }
     },
     show: function() {
-        getElm1('.popup').style.display = 'flex';
+        getElm('.popup').style.display = 'flex';
     },
     close: function() {
-        getElm1('.popup').style.display = 'none';
+        getElm('.popup').style.display = 'none';
     }
 }
 
@@ -131,13 +131,13 @@ for (let x in tools) {
     }
     html += `<a href="${a[x][0]}" style="--i: ${x};">${a[x][1]}</a>`;
 }
-getElm1('.nav .items').innerHTML = html;
+getElm('.nav .items').innerHTML = html;
 
 function closeMenu() {
-    getElm1('#checkbox').checked = false;
+    getElm('#checkbox').checked = false;
 }
 
-getElm1('.main').onclick = function(event) {
+getElm('.main').onclick = function(event) {
     closeMenu();
 }
 
@@ -162,14 +162,14 @@ let theme = {
         toggle: function() {
             let regex = /cy2calc/;
             if (getCookie('colorNav') == 'on') {
-                getElm1('.nav').classList.add('color-follow');
+                getElm('.nav').classList.add('color-follow');
                 if (regex.test(location.href)) {
-                    getElm1('.footer').classList.add('color-follow');
+                    getElm('.footer').classList.add('color-follow');
                 }
             } else {
-                getElm1('.nav').classList.remove('color-follow');
+                getElm('.nav').classList.remove('color-follow');
                 if (regex.test(location.href)) {
-                    getElm1('.footer').classList.remove('color-follow');
+                    getElm('.footer').classList.remove('color-follow');
                 }
             }
         }
@@ -178,9 +178,9 @@ let theme = {
         toggle: function() {
             //const isDM = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (getCookie('darkMode') == 'on') {
-                getElm1('body').classList.add('dark-mode');
+                getElm('body').classList.add('dark-mode');
             } else {
-                getElm1('body').classList.remove('dark-mode');
+                getElm('body').classList.remove('dark-mode');
             }
         }
     }
