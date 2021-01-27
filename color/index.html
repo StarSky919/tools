@@ -14,7 +14,7 @@
             align-items: center;
         }
 
-        .converter .row.rgb * {
+        .converter .row.i4 * {
             width: 24%;
         }
 
@@ -54,7 +54,7 @@
         <div class="title">颜色转换</div>
         <p>输入颜色即可实时预览与转换</p>
         <div class="converter">
-            <div class="row rgb">
+            <div class="row i4">
                 <span>RGB：</span>
                 <input type="text" id="red" class="text" placeholder="R" onkeydown="execute(this)">
                 <input type="text" id="green" class="text" placeholder="G" onkeydown="execute(this)">
@@ -63,6 +63,12 @@
             <div class="row hex">
                 <span>HEX：#</span>
                 <input type="text" id="hex" class="text" placeholder="HEX" onkeydown="execute(this)">
+            </div>
+            <div class="row i4">
+                <span>RGB：</span>
+                <input type="text" id="hue" class="text" placeholder="H" onkeydown="execute(this)">
+                <input type="text" id="strt" class="text" placeholder="S" onkeydown="execute(this)">
+                <input type="text" id="ltns" class="text" placeholder="L" onkeydown="execute(this)">
             </div>
         </div>
         <div class="color"></div>

@@ -154,42 +154,37 @@ let theme = {
     },
     navBar: {
         toggle: function() {
-            var regex = /cy2calc/g;
-            if (getCookie('transparentNav') == 'on') {
-                getElm1('.nav').classList.add('transparent');
+            var regex = /cy2calc/;
+            if (getCookie('colorNav') == 'on') {
+                getElm1('.nav').classList.add('color-follow');
                 if (regex.test(location.href)) {
-                    getElm1('.footer').classList.add('transparent');
+                    getElm1('.footer').classList.add('color-follow');
                 }
             } else {
-                getElm1('.nav').classList.remove('transparent');
+                getElm1('.nav').classList.remove('color-follow');
                 if (regex.test(location.href)) {
-                    getElm1('.footer').classList.remove('transparent');
+                    getElm1('.footer').classList.remove('color-follow');
                 }
+            }
+        }
+    },
+    darkMode: {
+        toggle: function() {
+            //const isDM = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (getCookie('darkMode') == 'on') {
+                getElm1('body').classList.add('dark-mode');
+            } else {
+                getElm1('body').classList.remove('dark-mode');
             }
         }
     }
 }
 
-/*START: Dark Mode*/
-
-//const isDM = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-let darkMode = {
-    toggle: function() {
-        if (getCookie('darkMode') == 'on') {
-            getElm1('body').classList.add('dark-mode');
-        } else {
-            getElm1('body').classList.remove('dark-mode');
-        }
-    }
-}
-
-/*END: Dark Mode*/
 
 /*END: Theme Settings*/
 
 /*START: Window Events*/
 theme.mainColor.toggle();
 theme.navBar.toggle();
-darkMode.toggle();
+theme.darkMode.toggle();
 /*END: Window Events*/

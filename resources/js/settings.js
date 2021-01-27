@@ -1,25 +1,28 @@
+setCookie('transparentNav', '', -1);
 setCookie('eggs', '', -1);
 
-var transparent = getElm1('#transparentNav');
+var colorNav = getElm1('#colorNav');
 var dark = getElm1('#darkMode');
 var limit = getElm1('#unlimited');
 
 /*START: Theme Settings*/
 {
-    if (getCookie('transparentNav') == 'on') {
-        transparent.checked = true;
+    if (getCookie('colorNav') == 'on') {
+        colorNav.checked = true;
     }
 
     if (getCookie('darkMode') == 'on') {
         dark.checked = true;
-        transparent.disabled = true;
     }
 
-    transparent.onclick = function() {
-        if (transparent.checked) {
-            setCookie('transparentNav', 'on', 365);
+    colorNav.onclick = function() {
+        if (colorNav.checked) {
+            setCookie('colorNav', 'on', 365);
+            setCookie('darkMode', 'off', 365);
+            dark.checked = false;
+            theme.darkMode.toggle();
         } else {
-            setCookie('transparentNav', 'off', 365);
+            setCookie('colorNav', 'off', 365);
         }
         theme.navBar.toggle();
     }
@@ -27,15 +30,13 @@ var limit = getElm1('#unlimited');
     dark.onclick = function() {
         if (dark.checked) {
             setCookie('darkMode', 'on', 365);
-            setCookie('transparentNav', 'off', 365);
-            transparent.checked = false;
-            transparent.disabled = true;
+            setCookie('colorNav', 'off', 365);
+            colorNav.checked = false;
             theme.navBar.toggle();
         } else {
             setCookie('darkMode', 'off', 365);
-            transparent.disabled = false;
         }
-        darkMode.toggle();
+        theme.darkMode.toggle();
     }
 } /*END: Theme Settings*/
 
@@ -58,7 +59,7 @@ var limit = getElm1('#unlimited');
 {
     function resetSettings() {
         setCookie('mainColor', '#9898FF', 365);
-        setCookie('transparentNav', 'off', 365);
+        setCookie('colorNav', 'off', 365);
         setCookie('darkMode', 'off', 365);
         setCookie('autoDM', 'off', 365);
         setCookie('unlimited', 'off', 365);
@@ -68,6 +69,6 @@ var limit = getElm1('#unlimited');
         }
         theme.mainColor.set('#9898FF');
         theme.navBar.toggle();
-        darkMode.toggle();
+        theme.darkMode.toggle();
     }
 } /*END: Resets*/
