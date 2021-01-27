@@ -177,14 +177,13 @@
     </div>
     <script type="text/javascript" src="../resources/js/main.js"></script>
     <script type="text/javascript">
-        let dElm = document.documentElement;
-        document.addEventListener('scroll', (e) => {
-            if (dElm.scrollTop > getElm('.about').offsetHeight) {
+        window.onscroll = function(e) {
+            if (getElm('html').scrollTop > getElm('.about').offsetHeight) {
                 getElm('.update').classList.add('fade-in');
             } else {
                 getElm('.update').classList.remove('fade-in');
             }
-        });
+        };
     </script>
 </body>
 
