@@ -111,13 +111,13 @@ body {
 .nav .menu,
 .nav .about,
 .nav .home {
-    transition: filter 0.25s ease;
+    transition: filter 0.2s ease;
 }
 
 .nav .menu:active,
 .nav .about:active,
 .nav .home:active {
-    filter: brightness(80%);
+    filter: brightness(85%);
 }
 
 .nav .items {
@@ -137,7 +137,7 @@ body {
 }
 
 .dark-mode .nav .items {
-    box-shadow: 2px 0 8px var(--black-alpha3);
+    box-shadow: 2px 8px 8px var(--black-alpha3);
 }
 
 .nav #checkbox:checked~.items {
