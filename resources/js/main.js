@@ -93,12 +93,9 @@ let popup = {
 
 /*END: Global Settings*/
 
-cdr(`https://unpkg.com/current-device/umd/current-device.min.js`,
-    function() {
-        if (!device.mobile() && !device.tablet()) {
-            document.write('请使用移动端设备访问此页面');
-        }
-    });
+if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    document.body.innerHTML = '请使用Android或iOS设备访问此页面';
+}
 
 /*START: Navigation Bar*/
 
