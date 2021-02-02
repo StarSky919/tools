@@ -163,13 +163,13 @@
             container.style.transform = 'none';
         }
 
-        getElm('.footer .gr').onclick = initialize;
+        getElm('.footer .gr').addEventListener('click', initialize);
 
-        getElm('.footer .atp').onclick = function() {
+        getElm('.footer .atp').addEventListener('click', function() {
             getElm('.footer .atp').classList.add('active');
             getElm('.footer .gr').classList.remove('active');
             container.style.transform = 'translateX(-50%)';
-        }
+        });
 
         window.onload = initialize;
 
@@ -206,7 +206,7 @@
             return bp;
         }
 
-        getElm('.gr #calc').onclick = function() {
+        getElm('.gr #calc').addEventListener('click', function() {
             let stp = Number(getElm('#stp').value);
             let perfect = Number(getElm('#perfect').value);
             let good = Number(getElm('#good').value);
@@ -239,22 +239,22 @@
                     res.gr(gr);
                 }
             }
-        }
+        });
 
-        getElm('.gr #reset').onclick = function() {
+        getElm('.gr #reset').addEventListener('click', function() {
             result1.innerHTML = str;
             getElm('#stp').value = '';
             getElm('#perfect').value = '';
             getElm('#good').value = '';
             getElm('#bad').value = '';
             getElm('#miss').value = '';
-        }
+        });
 
         /*END: Black Perfect*/
 
         /*START: Average TP*/
 
-        getElm('.atp #calc').onclick = function() {
+        getElm('.atp #calc').addEventListener('click', function() {
             let atp = Number(getElm('#atp').value);
             let ez = Number(getElm('#ez').value);
             let hd = Number(getElm('#hd').value);
@@ -279,9 +279,9 @@
                 res.atp(ctp);
                 return;
             }
-        }
+        });
 
-        getElm('.atp #reset').onclick = function() {
+        getElm('.atp #reset').addEventListener('click', function() {
             result2.innerHTML = str;
             getElm('#atp').value = '';
             getElm('#ez').value = '';
@@ -289,7 +289,7 @@
             getElm('#ch').value = '';
             getElm('#gl').value = '';
             getElm('#total').value = '';
-        }
+        });
 
         /*END: Average TP*/
     </script>

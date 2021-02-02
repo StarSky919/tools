@@ -24,10 +24,10 @@ function getType(id) {
     }
 }
 
-getElm('#reset').onclick = function() {
+getElm('#reset').addEventListener('click', function() {
     result.innerHTML = '请输入AV或BV号';
     abv.value = '';
-}
+});
 
 function incorrect() {
     result.innerHTML = '请输入正确的AV或BV号';

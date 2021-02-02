@@ -40,6 +40,13 @@
         let getPic = function() {
             switch (video.code) {
                 case 0:
+                    let iframe = document.createElement('iframe');
+                    iframe.id = 'video';
+                    iframe.frameBorder = 0;
+                    iframe.style.margin = '16px 0';
+                    iframe.style.borderRadius = '4px';
+                    iframe.src = `https://player.bilibili.com/player.html?bvid=${video.data.bvid}`;
+                    getElm('.main').insertBefore(iframe, getElm('#result'));
                     result.innerHTML = `视频标题：${video.data.title}<br />Up主：${video.data.owner.name}<br />视频封面：<a href="${String(video.data.pic)}" rel="noreferrer" target="_blank">点此进入</a>`;
                     break;
                 default:
@@ -48,7 +55,7 @@
             }
         }
 
-        getElm('#extract').onclick = function() {
+        getElm('#extract').addEventListener('click', function() {
             let abv = getElm('#abv').value;
             if (getType(abv) == 1) {
                 cdr(`https://api.bilibili.com/x/web-interface/view?aid=${abv.replace(regex.abv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
@@ -59,7 +66,13 @@
             } else {
                 incorrect();
             }
-        }
+        });
+
+        getElm('#reset').addEventListener('click', function() {
+            if (getElm('#video')) {
+                getElm('.main').removeChild(getElm('#video'));
+            }
+        });
     </script>
 </body>
 

@@ -178,7 +178,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        getElm('#changeColor').onclick = function() {
+        getElm('#changeColor').addEventListener('click', function() {
             popup.build('输入或选择颜色', getElm('.colors').innerHTML,
                 function() {
                     if (getElm('.popup input').value.length == 6) {
@@ -202,11 +202,11 @@
             }
             let span = getElmAll('.popup .rows span');
             for (let [index, elm] of span.entries()) {
-                span[index].onclick = function() {
+                span[index].addEventListener('click', function() {
                     getElm('.popup input').value = span[index].style.getPropertyValue('--color').replace(/#/, '').replace(/\s/, '');
-                }
+                });
             }
-        }
+        });
 
 
         function check(obj) {
@@ -220,16 +220,16 @@
             }, 1);
         }
 
-        getElm('#resetSettings').onclick = function() {
+        getElm('#resetSettings').addEventListener('click', function() {
             popup.build('提示', '确定恢复全部设置吗？',
                 function() {
                     resetSettings();
                     popup.close();
                 });
             popup.show();
-        }
+        });
 
-        getElm('#deleteData').onclick = function() {
+        getElm('#deleteData').addEventListener('click', function() {
             popup.build('提示', '以下项目将被清除：<br /><br />您在所有工具内设置的选项;<br />网站设置;<br /><br />确定删除数据？',
                 function() {
                     resetSettings();
@@ -239,7 +239,7 @@
                     popup.close();
                 });
             popup.show();
-        }
+        });
     </script>
 </body>
 

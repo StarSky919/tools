@@ -15,7 +15,7 @@ var limit = getElm('#unlimited');
         dark.checked = true;
     }
 
-    colorNav.onclick = function() {
+    colorNav.addEventListener('click', function() {
         if (colorNav.checked) {
             setCookie('colorNav', 'on', 365);
             setCookie('darkMode', 'off', 365);
@@ -25,9 +25,9 @@ var limit = getElm('#unlimited');
             setCookie('colorNav', 'off', 365);
         }
         theme.navBar.toggle();
-    }
+    });
 
-    dark.onclick = function() {
+    dark.addEventListener('click', function() {
         if (dark.checked) {
             setCookie('darkMode', 'on', 365);
             setCookie('colorNav', 'off', 365);
@@ -37,7 +37,7 @@ var limit = getElm('#unlimited');
             setCookie('darkMode', 'off', 365);
         }
         theme.darkMode.toggle();
-    }
+    });
 } /*END: Theme Settings*/
 
 /*START: Password Length Unlimited*/
@@ -46,13 +46,13 @@ var limit = getElm('#unlimited');
         limit.checked = true;
     }
 
-    limit.onclick = function() {
+    limit.addEventListener('click', function() {
         if (limit.checked) {
             setCookie('unlimited', 'on', 365);
         } else {
             setCookie('unlimited', 'off', 365);
         }
-    }
+    });
 } /*END: Password Length Unlimited*/
 
 /*START: Resets*/

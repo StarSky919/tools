@@ -69,19 +69,19 @@ let popup = {
     build: function(title, msg, func) {
         getElm('#title').innerHTML = title;
         getElm('#message').innerHTML = msg;
-        getElm('#confirm').onclick = function() {
+        getElm('#confirm').addEventListener('click', function() {
             func();
-        }
-        getElm('#cancel').onclick = function() {
+        });
+        getElm('#cancel').addEventListener('click', function() {
             popup.close();
-        }
-        window.onclick = function(event) {
+        });
+        window.addEventListener('click', function(event) {
             switch (event.target) {
                 case getElm('.popup'):
                     popup.close();
                     break;
             }
-        }
+        });
     },
     show: function() {
         getElm('.popup').style.display = 'flex';
@@ -134,9 +134,9 @@ function closeMenu() {
     getElm('#checkbox').checked = false;
 }
 
-getElm('.main').onclick = function(event) {
+getElm('.main').addEventListener('click', function(event) {
     closeMenu();
-}
+});
 
 window.onbeforeunload = function() {
     closeMenu();

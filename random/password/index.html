@@ -184,7 +184,7 @@
             mark: '!?,.;:&#@%$+-*_='
         }
 
-        getElm('#generate').onclick = function() {
+        getElm('#generate').addEventListener('click', function() {
             let length = Number(getElm('#length').value);
             let uc = getElm('#uc').checked;
             let lc = getElm('#lc').checked;
@@ -232,15 +232,15 @@
                 getElm('#result').value = '请设置选项';
             }
             autoHeight();
-        }
+        });
 
-        getElm('#reset').onclick = function() {
+        getElm('#reset').addEventListener('click', function() {
             getElm('#result').value = '设置长度和选项来生成随机密码';
             if (getCookie('unlimited') == 'on') {
                 getElm('#result').value += '\n长度过长将导致浏览器卡顿';
             }
             autoHeight();
-        }
+        });
     </script>
 </body>
 
