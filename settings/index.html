@@ -169,8 +169,8 @@
     <!-- Pop-up Windows -->
     <div class="popup">
         <div class="dialog">
-            <p id="title"></p>
-            <p id="message"></p>
+            <p class="title"></p>
+            <p class="message"></p>
             <p class="button">
                 <a id="cancel">取消</a>
                 <a id="confirm">确定</a>
@@ -188,9 +188,9 @@
                     } else {
                         let tip = document.createElement('p');
                         tip.innerHTML = '请输入正确的值！';
-                        getElm('.popup #message').appendChild(tip);
+                        getElm('.popup .message').appendChild(tip);
                         setTimeout(function() {
-                            getElm('.popup #message').removeChild(tip);
+                            getElm('.popup .message').removeChild(tip);
                         }, 2000);
                     }
                 });

@@ -67,12 +67,12 @@ let textRegex = {
 
 let popup = {
     build: function(title, msg, func) {
-        getElm('#title').innerHTML = title;
-        getElm('#message').innerHTML = msg;
-        getElm('#confirm').addEventListener('click', function() {
+        getElm('.popup .title').innerHTML = title;
+        getElm('.popup .message').innerHTML = msg;
+        getElm('.popup #confirm').addEventListener('click', function() {
             func();
         });
-        getElm('#cancel').addEventListener('click', function() {
+        getElm('.popup #cancel').addEventListener('click', function() {
             popup.close();
         });
         window.addEventListener('click', function(event) {
