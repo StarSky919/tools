@@ -186,6 +186,7 @@
     <script type="text/javascript" src="../resources/js/main.js"></script>
     <script type="text/javascript">
         document.addEventListener('scroll', function() {
+            alert('1')
             if (getElm('html').scrollTop > getElm('.about').offsetHeight) {
                 getElm('.update').classList.add('fade-in');
             } else {
