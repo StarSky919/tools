@@ -69,9 +69,7 @@ let popup = {
     build: function(title, msg, func) {
         getElm('.popup .title').innerHTML = title;
         getElm('.popup .message').innerHTML = msg;
-        getElm('.popup #confirm').addEventListener('click', function() {
-            func();
-        });
+        getElm('.popup #confirm'). onclick = func;
         getElm('.popup #cancel').addEventListener('click', function() {
             popup.close();
         });
