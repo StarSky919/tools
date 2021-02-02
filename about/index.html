@@ -185,13 +185,13 @@
     </div>
     <script type="text/javascript" src="../resources/js/main.js"></script>
     <script type="text/javascript">
-        window.onscroll = function(e) {
+        document.addEventListener('scroll', function() {
             if (getElm('html').scrollTop > getElm('.about').offsetHeight) {
                 getElm('.update').classList.add('fade-in');
             } else {
                 getElm('.update').classList.remove('fade-in');
             }
-        };
+        });
     </script>
 </body>
 
