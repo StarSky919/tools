@@ -37,7 +37,7 @@ function time() {
 
 /*Cross-domain Request*/
 function cdr(url, func) {
-    script = document.createElement('script');
+    let script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = url;
     document.body.appendChild(script);
@@ -89,6 +89,16 @@ let popup = {
     close: function() {
         getElm('.popup').style.display = 'none';
     }
+}
+
+let toast = function(msg, sec) {
+    let toast = document.createElement('div');
+    toast.style.cssText = 'display: block; position: fixed; line-height: 24px; left: 50%; bottom: 10vh; padding: 8px 24px; color: var(--toast-color); background:var(--toast-background); border-radius: 4px; font-size: 16px; transform: translateX(-50%); animation: fade-in 0.5s; z-index: 9999;';
+    toast.innerHTML = msg;
+    document.body.appendChild(toast);
+    setTimeout(function() {
+        document.body.removeChild(toast);
+    }, sec * 1000)
 }
 
 /*END: Global Settings*/

@@ -186,12 +186,13 @@
                         theme.mainColor.toggle();
                         popup.close();
                     } else {
-                        let tip = document.createElement('p');
+                        /*let tip = document.createElement('p');
                         tip.innerHTML = '请输入正确的值！';
                         getElm('.popup .message').appendChild(tip);
                         setTimeout(function() {
                             getElm('.popup .message').removeChild(tip);
-                        }, 2000);
+                        }, 2000);*/
+                        toast('请输入正确的值！', 2)
                     }
                 });
             popup.show();
@@ -208,7 +209,6 @@
             }
         });
 
-
         function check(obj) {
             setTimeout(function() {
                 if (obj.value.length > 6) {
@@ -216,7 +216,6 @@
                 }
                 textRegex.replace(/[^0-9A-Fa-f]/g, obj);
                 obj.value = obj.value.toUpperCase();
-
             }, 1);
         }
 
