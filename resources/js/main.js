@@ -101,8 +101,8 @@ let toast = function(msg, sec) {
 
 /*END: Global Settings*/
 
-if (!/Mobile|Android|iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) {
-    document.body.innerHTML = '请使用Android或iOS设备访问此页面';
+if (!/Android|iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) {
+    document.body.innerHTML = '请使用Android或Apple的设备访问此页面';
 }
 
 /*START: Navigation Bar*/
