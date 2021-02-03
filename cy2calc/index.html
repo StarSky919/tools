@@ -202,7 +202,7 @@
 
         function grCalc(tp, p, g, b, m) {
             bp = 0;
-            bp = Math.round(p - ((p + g + b + m) * tp - 30 * g - 70 * p) / 30);
+            bp = Math.floor(p - ((p + g + b + m) * tp - 30 * g - 70 * p) / 30);
             return bp;
         }
 
