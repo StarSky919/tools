@@ -25,7 +25,7 @@
     <div class="main">
         <h2>AV & BV转换器</h2>
         <p id="result">请输入AV或BV号</p>
-        <input type="text" class="text" id="abv" onkeydown="check(this)" />
+        <input type="text" class="text" id="number" onkeydown="check(this)" />
         <p class="button">
             <a id="convert" onclick="convert()">转换</a>
             <a id="reset" onclick="reset()">重置</a>
@@ -38,11 +38,16 @@
     <script type="text/javascript" src="../../resources/js/bilibili.js"></script>
     <script type="text/javascript">
         getElm('#convert').addEventListener('click', function() {
-            if (abv.value) {
-                result.innerHTML = convert(abv.value);
+            if (num.value) {
+                result.innerHTML = convert(num.value);
             } else {
-                incorrect();
+                result.innerHTML = '请输入正确的AV或BV号'
             }
+        });
+
+        getElm('#reset').addEventListener('click', function() {
+            result.innerHTML = '请输入AV或BV号';
+            num.value = '';
         });
 
         let password = "fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF";
@@ -56,7 +61,7 @@
 
         function convert(id) {
             if (getType(id) == 0) return '请输入正确的AV或BV号';
-            let abid = (id.replace(regex.abv, "") ^ password1) + password2;
+            let abid = (id.replace(regex.abcv, "") ^ password1) + password2;
             let array2 = {};
             for (let i = 0; i < 6; i++) {
                 array2[enable_code[i]] = password[Math.floor(abid / 58 ** i) % 58];
@@ -70,7 +75,7 @@
             if (id.match(RegExp(verify, "i")) && verify > 0) {
                 return `BV${out_bv}`;
             } else {
-                abid = id.replace(regex.abv, "");
+                abid = id.replace(regex.abcv, "");
                 base58 = 0;
                 for (let i = 0; i < 6; i++) {
                     base58 += array[abid[enable_code[i]]] * 58 ** i;

@@ -1,11 +1,14 @@
 let regex = {
-    abv: /^[ab]v?/i,
+    abcv: /^[abc]v?/i,
+    au: /^au?/i,
     aid: /av[0-9]{1,8}$/i,
     bvid: /[Bb][Vv][0-9A-Za-z]{10}/,
+    cid: /cv[0-9]{1,8}$/i,
+    auid: /au[0-9]{1,8}$/i,
     rp: /[^0-9A-Za-z]/g
 }
 
-let abv = getElm('#abv');
+let num = getElm('#number');
 let result = getElm('#result');
 
 function check(obj) {
@@ -19,16 +22,11 @@ function getType(id) {
         return 1;
     } else if (regex.bvid.test(id)) {
         return 2;
+    } else if (regex.cid.test(id)) {
+        return 3;
+    } else if (regex.auid.test(id)) {
+        return 4;
     } else {
         return 0;
     }
-}
-
-getElm('#reset').addEventListener('click', function() {
-    result.innerHTML = '请输入AV或BV号';
-    abv.value = '';
-});
-
-function incorrect() {
-    result.innerHTML = '请输入正确的AV或BV号';
 }

@@ -7,7 +7,7 @@
     <link rel="icon" href="../../resources/logo.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../../resources/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="../../resources/css/style.css" type="text/css" />
-    <title>B站视频封面提取</title>
+    <title>哔哩哔哩封面提取</title>
 </head>
 
 <body>
@@ -20,12 +20,13 @@
         <span class="home">
             <a href="../../" class="fa fa-home"></a>
         </span>
-        <span class="title">BiliBili Cover Extractor</span>
+        <span class="title">Cover Extractor</span>
     </div>
     <div class="main">
-        <h2>B站视频封面提取</h2>
+        <h2>哔哩哔哩封面提取</h2>
+        <p>专栏与音频封面的提取正在建设中！</p>
         <p id="result">请输入AV或BV号</p>
-        <input type="text" class="text" id="abv" onkeydown="check(this)" />
+        <input type="text" class="text" id="number" onkeydown="check(this)" />
         <p class="button">
             <a id="extract">提取</a>
             <a id="reset">重置</a>
@@ -38,43 +39,63 @@
     <script type="text/javascript" src="../../resources/js/bilibili.js"></script>
     <script type="text/javascript">
         let getPic = function() {
-            switch (video.code) {
-                case 0:
-                    let iframe = document.createElement('iframe');
-                    iframe.id = 'video';
-                    iframe.frameBorder = 0;
-                    iframe.style.margin = '16px 0';
-                    iframe.style.borderRadius = '4px';
-                    iframe.src = `https://player.bilibili.com/player.html?bvid=${video.data.bvid}`;
-                    getElm('.main').insertBefore(iframe, getElm('#result'));
-                    result.innerHTML = `视频标题：${video.data.title}<br />Up主：${video.data.owner.name}<br />视频封面：<a href="${String(video.data.pic)}" rel="noreferrer" target="_blank">点此进入</a>`;
-                    break;
-                default:
-                    result.innerHTML = '视频不存在或已被删除';
-                    break;
+            if (video) {
+                switch (video.code) {
+                    case 0:
+                        result.innerHTML = `视频标题：${video.data.title}<br />Up主：${video.data.owner.name}<br />视频封面：<a href="${video.data.pic}" rel="noreferrer" target="_blank">点此进入</a>`;
+                        break;
+                    default:
+                        result.innerHTML = '视频不存在或已被删除';
+                        break;
+                }
             }
+
+            /*if (article) {
+                switch (article.code) {
+                    case 0:
+                        result.innerHTML = `专栏标题：${article.data.title}<br />专栏作者：${article.data.author_name}<br />专栏封面：<a href="${article.data.banner_url}" rel="noreferrer" target="_blank">点此进入</a>`;
+                        break;
+                    default:
+                        result.innerHTML = '专栏不存在或已被删除';
+                        break;
+                }
+            }
+
+            if (audio) {
+                switch (audio.code) {
+                    case 0:
+                        result.innerHTML = `音频标题：${audio.data.title}<br />Up主：${audio.data.uname}<br />音频封面：<a href="${audio.data.cover}" rel="noreferrer" target="_blank">点此进入</a>`;
+                        break;
+                    default:
+                        result.innerHTML = '音频不存在或已被删除';
+                        break;
+                }
+            }*/
         }
 
         getElm('#extract').addEventListener('click', function() {
-            if (getElm('#video')) {
-                getElm('.main').removeChild(getElm('#video'));
-            }
-            let abv = getElm('#abv').value;
-            if (getType(abv) == 1) {
-                cdr(`https://api.bilibili.com/x/web-interface/view?aid=${abv.replace(regex.abv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
+            var video, article, audio;
+            let id = num.value;
+            if (getType(id) == 1) {
+                cdr(`https://api.bilibili.com/x/web-interface/view?aid=${id.replace(regex.abcv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
                     getPic);
-            } else if (getType(abv) == 2) {
-                cdr(`https://api.bilibili.com/x/web-interface/view?bvid=${abv.replace(regex.abv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
+            } else if (getType(id) == 2) {
+                cdr(`https://api.bilibili.com/x/web-interface/view?bvid=${id.replace(regex.abcv, '')}&callback=var%20video%20=%20&jsonp=jsonp`,
                     getPic);
+                /*} else if (getType(id) == 3) {
+                    cdr(`http://api.bilibili.com/x/article/viewinfo?id=${id.replace(regex.abcv, '')}&callback=var%20article=&jsonp=jsonp`,
+                        getPic);
+                } else if (getType(id) == 4) {
+                    cdr(`https://www.bilibili.com/audio/music-service-c/web/song/info?sid=${id.replace(regex.au, '')}&callback=var%20audio%20=%20&jsonp=jsonp`,
+                        getPic);*/
             } else {
-                incorrect();
+                result.innerHTML = '请输入正确的AV或BV号';
             }
         });
 
         getElm('#reset').addEventListener('click', function() {
-            if (getElm('#video')) {
-                getElm('.main').removeChild(getElm('#video'));
-            }
+            result.innerHTML = '请输入AV或BV号';
+            num.value = '';
         });
     </script>
 </body>
