@@ -23,20 +23,21 @@
         <span class="title">Video Data Extractor</span>
     </div>
     <div class="main">
-        <h2>视频数据获取</h2>
+        <h2>该页面正在建设中</h2>
+        <!-- <h2>视频数据获取</h2>
         <p id="result">请输入AV或BV号</p>
         <input type="text" class="text" id="number" onkeydown="check(this)" />
         <p class="button">
             <a id="extract">提取</a>
             <a id="reset">重置</a>
-        </p>
+        </p> -->
         <p class="copyright">
             <i class="fa fa-copyright"></i> 2021 StarSky919
         </p>
     </div>
     <script type="text/javascript" src="../../resources/js/main.js"></script>
     <script type="text/javascript" src="../../resources/js/bilibili.js"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         let getInfo = function() {
             if (vInfo) {
                 switch (vInfo.code) {
@@ -49,7 +50,6 @@
                         iframe.src = `https://player.bilibili.com/player.html?bvid=${vInfo.data.bvid}`;
                         getElm('.main').insertBefore(iframe, getElm('#result'));
                         result.innerHTML = `视频标题：${vInfo.data.title}<br />Up主：${vInfo.data.owner.name}`;
-                        getData()
                         break;
                     default:
                         result.innerHTML = '视频不存在或已被删除';
@@ -90,7 +90,7 @@
                 /*cdr(`https://api.bilibili.com/x/web-interface/archive/stat?bvid=${id.replace(regex.abcv, '')}&callback=var%20vData%20=%20&jsonp=jsonp`,
                     getData);*/
             } else {
-                result.innerHTML = '请输入正确的AV或BV号'
+                result.innerHTML = '请输入正确的AV或BV号';
             }
         });
 
@@ -102,7 +102,7 @@
             result.innerHTML = '请输入AV或BV号';
             num.value = '';
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
