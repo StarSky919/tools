@@ -112,7 +112,8 @@ let tools = [
     ['cy2calc/', 'Cytus II计算器'],
     ['random/password/', '密码生成器'],
     ['color/', '颜色工具'],
-    ['settings/', '网站设置']
+    ['settings/', '网站设置'],
+    ['h5c3_effect/','前端效果实现']
 ]
 let url = location.href.split('/');
 var html = '';
