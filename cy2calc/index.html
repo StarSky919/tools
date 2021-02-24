@@ -220,7 +220,7 @@
 
             let gr = grCalc(stp, perfect, good, bad, miss);
 
-            if (gr < 0 || gr > perfect) {
+            if (gr < 0 || gr > perfect || (stp != 100 && gr == 0 && good + bad + miss == 0)) {
                 al.gr();
                 return;
             } else if (gr == 0) {
