@@ -120,7 +120,7 @@ var html = '';
 
 //Compatible
 var int = 5;
-if (url[2] == 'localhost:7700') {
+if (url[2] == 'localhost:7700' || url[2] == 'tools.starsky919.xyz') {
     int = 4;
 }
 
