@@ -201,7 +201,7 @@
         /*START: Black Perfect*/
 
         function grCalc(tp, p, g, b, m) {
-            bp = 0;
+            let bp = 0;
             bp = Math.floor(p - ((p + g + b + m) * tp - 30 * g - 70 * p) / 30);
             return bp;
         }
@@ -213,32 +213,22 @@
             let bad = Number(getElm('#bad').value);
             let miss = Number(getElm('#miss').value);
 
-            if (stp > 100 || stp <= 0 || perfect + good + bad + miss == 0) {
+            if (stp < 0 || perfect < 0 || good < 0 || bad < 0 || miss < 0 || perfect + good + bad + miss == 0 || (stp > 0 && perfect + good + bad + miss == 0)) {
                 al.gr();
                 return;
-            } else if (stp < 0 || perfect < 0 || good < 0 || bad < 0 || miss < 0) {
-                al.gr();
-                return;
-            } else if (stp == 100) {
-                if (good + bad + miss != 0) {
-                    al.gr();
-                    return;
-                } else {
-                    getElm('.gr #result') = '您没有小P！';
-                    return;
-                }
-            } else {
-                let gr = grCalc(stp, perfect, good, bad, miss);
-                if (gr < 0 || gr > perfect) {
-                    al.gr();
-                    return;
-                } else if (gr == 0) {
-                    getElm('.gr #result') = '您没有小P！';
-                    return;
-                } else {
-                    res.gr(gr);
-                }
             }
+
+            let gr = grCalc(stp, perfect, good, bad, miss);
+
+            if (gr < 0 || gr > perfect) {
+                al.gr();
+                return;
+            } else if (gr == 0) {
+                getElm('.gr #result').innerHTML = '您没有小P！';
+                return;
+            }
+
+            res.gr(gr);
         });
 
         getElm('.gr #reset').addEventListener('click', function() {
