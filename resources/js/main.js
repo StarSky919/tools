@@ -119,9 +119,9 @@ let url = location.href.split('/');
 var html = '';
 
 //Compatible
-var int = 5;
-if (url[2] == 'localhost:7700' || url[2] == 'tools.starsky919.xyz') {
-    int = 4;
+var int = 4;
+if (url[3] == 'tools') {
+    int = 5;
 }
 
 for (let x in tools) {
