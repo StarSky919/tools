@@ -1,5 +1,4 @@
 @import "fonts/fontface.css";
-@import "fonts/font-awesome.css";
 @import "popup.css";
 
 :root {
@@ -71,7 +70,7 @@
 }
 
 * {
-    font-family: "RobotoSlab", sans-serif;
+    font-family: "HarmonyOS_Sans", sans-serif;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;

@@ -1,47 +1,26 @@
-@font-face {
-    font-family: "RobotoSlab";
-    font-style: normal;
-    font-weight: 100;
-    font-display: swap;
-    src: url(../../fonts/robotoslab/RobotoSlab-Thin.ttf) format("truetype");
-}
+@import "https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css";
+@import "HarmonyOS_Sans.css";
 
 @font-face {
-    font-family: "RobotoSlab";
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(../../fonts/robotoslab/RobotoSlab-Light.ttf) format("truetype");
-}
-
-@font-face {
-    font-family: "RobotoSlab";
+    font-family: "HarmonyOS_Sans_SC";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(../../fonts/robotoslab/RobotoSlab-Regular.ttf) format("truetype");
+    src: url(../../fonts/HarmonyOS_Sans_SC-Regular.ttf) format("truetype");
 }
 
 @font-face {
-    font-family: "RobotoSlab";
+    font-family: "JetBrainsMono";
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-display: swap;
-    src: url(../../fonts/robotoslab/RobotoSlab-Medium.ttf) format("truetype");
+    src: url(../../fonts/JetBrainsMono-Regular.ttf) format("truetype");
 }
 
 @font-face {
-    font-family: "RobotoSlab";
+    font-family: "Electrolize";
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-display: swap;
-    src: url(../../fonts/robotoslab/RobotoSlab-Bold.ttf) format("truetype");
-}
-
-@font-face {
-    font-family: "RobotoSlab";
-    font-style: normal;
-    font-weight: 900;
-    font-display: swap;
-    src: url(../../fonts/robotoslab/RobotoSlab-Black.ttf) format("truetype");
+    src: url(../../fonts/Electrolize.ttf) format("truetype");
 }
